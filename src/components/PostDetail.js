@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
-class Post extends Component {
+import Post from './Post';
+
+class PostDetail extends Component {
 	render() {
 		return (
-			<div class="post">
-				<h1 class="post-tile">Post Title</h1>
+			<tr class="post-detail-container">
+				<Post />
 				<p class="post-body">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia
 					libero a est rhoncus, ac scelerisque arcu euismod. Suspendisse
@@ -28,7 +30,9 @@ class Post extends Component {
 						</li>
 					</ul>
 				</div>
-			</div>
+			</tr>
 		);
 	}
 }
+
+export default PostDetail;
