@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 
+import Post from '../components/Post';
+
 class Home extends Component {
 	render() {
 		return (
 			<tr className="home-container">
 				<td>
 					<table className="home-content">
-						<tbody>
-							<tr className="post-title-row" />
-							<tr className="post-details-row" />
-							<tr className="post-spacer-row" />
-						</tbody>
+						<Post />
+						<Post />
+						<Post />
+						<Post />
+						<Post />
+						<Post />
+						<Post />
+						<Post />
+						<Post />
+						<Post />
 					</table>
 				</td>
 			</tr>
