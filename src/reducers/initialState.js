@@ -1,17 +1,28 @@
 const initialState = {
-	posts: [
-		{
-			id: 'post1',
-			title:
-				'The Benjamin Franklin method for learning more from programming books',
-			author: 'syedaman',
-			body: 'this is my post body...',
-			points: 198,
-			isDeleted: false,
-			timestamp: Date.now(),
-			comments: [],
+	posts: {
+		byId: {
+			post1: {
+				id: 'post1',
+				title: 'The Benjamin Franklin method...',
+				author: 'syedaman',
+				body: 'this is my post body...',
+				points: 198,
+				isDeleted: false,
+				timestamp: Date.now(),
+				comments: ['comment1', 'comment2'],
+			},
+			post2: {
+				id: 'post2',
+				title: 'JEYAH!!!!',
+				author: 'jamaicanman',
+				body: 'rasta man...',
+				points: 25,
+				isDeleted: false,
+				timestamp: Date.now(),
+				comments: ['comment2'],
+			},
 		},
-	],
+	},
 	comments: [
 		{
 			author: 'tabtilachowdhury',
