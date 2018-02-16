@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import NavBar from '../components/NavBar';
 import Home from './Home';
@@ -12,7 +13,7 @@ class App extends Component {
 					<tbody className="readable-content">
 						<NavBar />
 						<TableSpacerRow height="10px" />
-						<Home />
+						<Home posts={this.props.posts} />
 					</tbody>
 				</table>
 			</div>
@@ -20,4 +21,8 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapStateToProps = currentState => ({
+	posts: currentState.posts.posts.byId
+})
+
+export default connect(mapStateToProps)(App);
