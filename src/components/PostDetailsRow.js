@@ -2,7 +2,7 @@ import React from 'react';
 
 const PostDetailsRow = () => (
 	<tr className="post-details-row">
-		<td colspan="2" />
+		<td colSpan="2" />
 
 		<td className="post-details-container">
 			<span className="post-points">449 points</span>
