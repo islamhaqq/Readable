@@ -4,17 +4,19 @@ import initialState from './initialState';
 export function posts(previousState = initialState, action) {
 	switch (action.type) {
 		case UPVOTE_POST_ACTION_TYPE:
-			return Object.assign({}, previousState, {
+			return {
+				...previousState,
 				posts: {
 					byId: {
-						[action.postId]: {
-							...previousState.posts.byId[action.postId],
-							points: previousState.posts.byId[action.postId].points + 1
+						...previousState.posts.byId,
+						[action.payload.postId]: {
+							...previousState.posts.byId[action.payload.postId],
+							points: previousState.posts.byId[action.payload.postId].points + 1
 						}
 					}
 				}
-			});
+			};
 		default:
 			return previousState;
 	}
-}
+};
