@@ -2,5 +2,12 @@ import { UPVOTE_POST_ACTION_TYPE } from '../actions';
 import initialState from './initialState';
 
 export function posts(previousState = initialState, action) {
-	return previousState;
+	switch (action.type) {
+		case UPVOTE_POST_ACTION_TYPE:
+			return Object.assign({}, previousState, {
+				...previousState,
+			});
+		default:
+			return previousState;
+	}
 }
