@@ -1,14 +1,9 @@
 import { combineReducers } from 'redux';
 
-import { UPVOTE_POST_ACTION_TYPE } from '../actions';
-import initialState from './initialState';
-
-function posts(previousState = initialState, action) {
-	return previousState;
-}
+import * as allReducers from './allReducers';
 
 const rootReducer = combineReducers({
-	posts,
+	allReducers,
 });
 
 export default rootReducer;
