@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PostSpacerRow from './PostSpacerRow';
+
 const Post = () => (
 	<tbody className="post-container">
 		<tr className="post-main-row">
@@ -22,7 +24,8 @@ const Post = () => (
 				<a className="post-details-view-comments-link">218 comments</a>
 			</td>
 		</tr>
-		<tr style={{ height: '5px' }} className="post-spacer-row" />
+
+		<PostSpacerRow />
 	</tbody>
 );
 
