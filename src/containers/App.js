@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import NavBar from '../components/NavBar';
 import Home from './Home';
+import TableSpacerRow from '../components/TableSpacerRow';
 
 class App extends Component {
 	render() {
@@ -10,7 +11,7 @@ class App extends Component {
 				<table className="readable">
 					<tbody className="readable-content">
 						<NavBar />
-						<tr style={{ height: '10px' }} className="spacer" />
+						<TableSpacerRow height="10px" />
 						<Home />
 					</tbody>
 				</table>

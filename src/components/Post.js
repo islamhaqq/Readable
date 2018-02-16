@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PostPrimaryRow from './PostPrimaryRow';
-import PostSpacerRow from './PostSpacerRow';
+import TableSpacerRow from './TableSpacerRow';
 import PostDetailsRow from './PostDetailsRow';
 
 const Post = () => (
@@ -10,7 +10,7 @@ const Post = () => (
 
 		<PostDetailsRow />
 
-		<PostSpacerRow />
+		<TableSpacerRow height="20px" />
 	</tbody>
 );
 
