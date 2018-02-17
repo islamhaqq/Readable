@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SubmitNavBar from './SubmitNavBar';
 import TableSpacerRow from './TableSpacerRow';
@@ -16,5 +17,9 @@ const Submit = () => (
 		</table>
 	</center>
 );
+
+Submit.propTypes = {
+	onSubmitNewPost: PropTypes.func.isRequired,
+};
 
 export default Submit;
