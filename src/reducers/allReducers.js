@@ -1,4 +1,4 @@
-import { UPVOTE_POST_ACTION_TYPE } from '../actions';
+import { UPVOTE_POST_ACTION_TYPE } from '../actions/actionTypes';
 import initialState from './initialState';
 
 export function posts(previousState = initialState, action) {
@@ -11,12 +11,13 @@ export function posts(previousState = initialState, action) {
 						...previousState.posts.byId,
 						[action.payload.postId]: {
 							...previousState.posts.byId[action.payload.postId],
-							points: previousState.posts.byId[action.payload.postId].points + 1
-						}
-					}
-				}
+							points:
+								previousState.posts.byId[action.payload.postId].points + 1,
+						},
+					},
+				},
 			};
 		default:
 			return previousState;
 	}
-};
+}
