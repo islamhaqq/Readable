@@ -30,8 +30,10 @@ const SubmitForm = ({ onSubmitNewPost, history }) => (
 						body: this.htmlElementForBodyInput.value,
 					};
 
-					onSubmitNewPost(newPostData);
-					history.push('/');
+					if (newPostData.title && newPostData.author && newPostData.body) {
+						onSubmitNewPost(newPostData);
+						history.push('/');
+					}
 				}}
 			>
 				Submit
