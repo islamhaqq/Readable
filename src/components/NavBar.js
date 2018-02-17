@@ -8,14 +8,14 @@ const NavBar = () => (
 				<tbody>
 					<tr>
 						<td className="navigation-bar-main-links">
-							<a href="#">Readable</a>
-							<a href="#">Non-Fiction</a>
-							<a href="#">Fiction</a>
+							<Link to="/">Readable</Link>
+							<a>Non-Fiction</a>
+							<a>Fiction</a>
 							<Link to="/submit">Submit</Link>
 						</td>
 						<td className="navigation-bar-profile-actions">
-							<a href="#">Syed Aman</a>
-							<a href="#">logout</a>
+							<a>Syed Aman</a>
+							<a>logout</a>
 						</td>
 					</tr>
 				</tbody>

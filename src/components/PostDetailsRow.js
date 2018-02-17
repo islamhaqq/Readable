@@ -8,9 +8,7 @@ const PostDetailsRow = ({ post }) => (
 
 		<td className="post-details-container">
 			<span className="post-points">{`${post.points} points by `}</span>
-			<a href="#" className="post-author">
-				{post.author}
-			</a>
+			<a className="post-author">{post.author}</a>
 			<span className="post-timestamp">
 				{` ${moment(post.timestamp)
 					.startOf('second')
