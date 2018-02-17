@@ -8,9 +8,9 @@ const NavBar = () => (
 					<tr>
 						<td className="navigation-bar-main-links">
 							<a href="#">Readable</a>
-							<a href="#">Ask</a>
 							<a href="#">Non-Fiction</a>
 							<a href="#">Fiction</a>
+							<a href="#">Submit</a>
 						</td>
 						<td className="navigation-bar-profile-actions">
 							<a href="#">Syed Aman</a>
