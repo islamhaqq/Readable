@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SubmitForm = ({ onSubmitNewPost }) => (
+const SubmitForm = ({ onSubmitNewPost, history }) => (
 	<tr>
 		<td>
 			<label>Author</label>
@@ -31,6 +31,7 @@ const SubmitForm = ({ onSubmitNewPost }) => (
 					};
 
 					onSubmitNewPost(newPostData);
+					history.push('/');
 				}}
 			>
 				Submit

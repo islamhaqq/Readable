@@ -28,7 +28,9 @@ class App extends Component {
 				<Route
 					path="/submit"
 					exact
-					render={() => <Submit onSubmitNewPost={this.props.onSubmitNewPost} />}
+					render={props => (
+						<Submit {...props} onSubmitNewPost={this.props.onSubmitNewPost} />
+					)}
 				/>
 
 				<Route
