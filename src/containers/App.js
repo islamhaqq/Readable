@@ -5,21 +5,11 @@ import { Route } from 'react-router-dom';
 
 import Home from '../components/Home';
 import Submit from '../components/Submit';
-import NavBar from '../components/NavBar';
-import TableSpacerRow from '../components/TableSpacerRow';
 
 class App extends Component {
 	render() {
 		return (
 			<div>
-				<table className="readable">
-					<tbody className="readable-content">
-						<NavBar />
-
-						<TableSpacerRow height="10px" />
-					</tbody>
-				</table>
-
 				<Route
 					path="/"
 					exact
