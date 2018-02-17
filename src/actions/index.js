@@ -1,3 +1,5 @@
+import uniqid from 'uniqid';
+
 import {
 	UPVOTE_POST_ACTION_TYPE,
 	DELETE_POST_ACTION_TYPE,
@@ -23,9 +25,14 @@ export const deletePost = postId => ({
 export const createPost = ({ title, author, body }) => ({
 	type: CREATE_POST_ACTION_TYPE,
 	payload: {
+		id: uniqid(),
 		title,
 		author,
 		body,
+		points: 1,
+		isDeleted: false,
+		timestamp: Date.now(),
+		comments: [],
 	},
 });
 

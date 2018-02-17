@@ -1,4 +1,7 @@
-import { UPVOTE_POST_ACTION_TYPE } from '../actions/actionTypes';
+import {
+	UPVOTE_POST_ACTION_TYPE,
+	CREATE_POST_ACTION_TYPE,
+} from '../actions/actionTypes';
 import initialState from './initialState';
 
 export function posts(previousState = initialState, action) {
@@ -17,6 +20,21 @@ export function posts(previousState = initialState, action) {
 					},
 				},
 			};
+
+		case CREATE_POST_ACTION_TYPE:
+			return {
+				...previousState,
+				posts: {
+					...previousState.posts,
+					byId: {
+						...previousState.posts.byId,
+						[action.payload.id]: {
+							...action.payload,
+						},
+					},
+				},
+			};
+
 		default:
 			return previousState;
 	}
