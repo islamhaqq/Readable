@@ -4,7 +4,7 @@ import PostPrimaryRow from './PostPrimaryRow';
 import TableSpacerRow from './TableSpacerRow';
 import PostDetailsRow from './PostDetailsRow';
 
-const Post = () => (
+const Post = ({ post }) => (
 	<tbody className="post-container">
 		<PostPrimaryRow />
 
