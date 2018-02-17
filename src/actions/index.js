@@ -1,10 +1,43 @@
 export const UPVOTE_POST_ACTION_TYPE = 'UPVOTE_POST';
+export const DELETE_POST_ACTION_TYPE = 'DELETE_POST';
+export const CREATE_POST_ACTION_TYPE = 'CREATE_POST';
+export const ADD_COMMENT_ACTION_TYPE = 'ADD_COMMENT';
+export const DELETE_COMMENT_ACTION_TYPE = 'DELETE_COMMENT';
 
-export function upvotePost(postId) {
-	return {
-		type: UPVOTE_POST_ACTION_TYPE,
-		payload: {
-			postId,
-		},
-	};
-}
+export const upvotePost = postId => ({
+	type: UPVOTE_POST_ACTION_TYPE,
+	payload: {
+		postId,
+	},
+});
+
+export const deletePost = postId => ({
+	type: DELETE_POST_ACTION_TYPE,
+	payload: {
+		postId,
+	},
+});
+
+export const createPost = ({ title, author, body }) => ({
+	type: CREATE_POST_ACTION_TYPE,
+	payload: {
+		title,
+		author,
+		body,
+	},
+});
+
+export const addComment = ({ author, body }) => ({
+	type: ADD_COMMENT_ACTION_TYPE,
+	payload: {
+		author,
+		body,
+	},
+});
+
+export const deleteComment = commentId => ({
+	type: DELETE_COMMENT_ACTION_TYPE,
+	payload: {
+		commentId,
+	},
+});
