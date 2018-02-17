@@ -27,6 +27,7 @@ export function posts(previousState = initialState.posts, action) {
 						...action.payload,
 					},
 				},
+				allIds: [...previousState.allIds, action.payload.id],
 			};
 
 		default:
