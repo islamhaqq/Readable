@@ -2,6 +2,7 @@ import React from 'react';
 
 import SubmitNavBar from './SubmitNavBar';
 import TableSpacerRow from './TableSpacerRow';
+import SubmitForm from './SubmitForm';
 
 const Submit = () => (
 	<center>
@@ -11,15 +12,7 @@ const Submit = () => (
 				<TableSpacerRow height="10" />
 			</tbody>
 
-			<tr>
-				<td>
-					<label>Title</label>
-					<input type="text" />
-
-					<label>Body</label>
-					<textarea />
-				</td>
-			</tr>
+			<SubmitForm />
 		</table>
 	</center>
 );
