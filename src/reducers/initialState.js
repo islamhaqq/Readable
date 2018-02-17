@@ -28,7 +28,6 @@ const initialState = {
 		byId: {
 			comment1: {
 				author: 'tabtilachowdhury',
-				timestamp: Date.now(),
 				id: 'comment1',
 				body: 'this is my comment body...',
 				points: 50,
@@ -37,7 +36,6 @@ const initialState = {
 			},
 			comment2: {
 				author: 'asdads',
-				timestamp: Date.now(),
 				id: 'comment2',
 				body: 'this is my another comment body...',
 				points: 61,
