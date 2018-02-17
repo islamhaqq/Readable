@@ -30,9 +30,16 @@ export function posts(previousState = initialState.posts, action) {
 		case actionTypes.DELETE_POST_ACTION_TYPE:
 			const { allIds, byId } = previousState;
 
+			const postIdsRemaining = allIds.filter(
+				postId => postId !== action.payload.id,
+			);
+
 			return {
 				...previousState,
-				allIds: [...allIds.filter(postId => postId !== action.payload.id)],
+				byId: {
+					...postIdsRemaining.map(postId => byId[postId]),
+				},
+				allIds: [...postIdsRemaining],
 			};
 
 		default:
