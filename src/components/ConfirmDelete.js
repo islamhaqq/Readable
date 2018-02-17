@@ -45,8 +45,10 @@ const ConfirmDelete = ({ post, onDeletePost, match, history }) => (
 						<table>
 							<tbody>
 								<tr>
-									<td>Test Post</td>
+									<td>{post.title}</td>
 								</tr>
+
+								<PostDetailsRow post={post} />
 
 								<tr>
 									<td>
@@ -66,7 +68,6 @@ const ConfirmDelete = ({ post, onDeletePost, match, history }) => (
 										</Link>
 									</td>
 								</tr>
-								{/* <PostDetailsRow post={post} /> */}
 							</tbody>
 						</table>
 					</td>

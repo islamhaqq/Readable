@@ -37,7 +37,10 @@ export function posts(previousState = initialState.posts, action) {
 			return {
 				...previousState,
 				byId: {
-					...postIdsRemaining.map(postId => byId[postId]),
+					...postIdsRemaining.reduce((postsById, postId) => {
+						postsById[postId] = byId[postId];
+						return postsById;
+					}, {}),
 				},
 				allIds: [...postIdsRemaining],
 			};

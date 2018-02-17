@@ -17,7 +17,9 @@ class App extends Component {
 					exact
 					render={() => (
 						<Home
-							posts={this.props.posts}
+							posts={Object.keys(this.props.posts).map(
+								key => this.props.posts[key],
+							)}
 							onUpvotePost={this.props.onUpvotePost}
 						/>
 					)}
@@ -32,7 +34,12 @@ class App extends Component {
 				<Route
 					path="/confirm-delete/:postId"
 					render={props => (
-						<ConfirmDelete {...props} onDeletePost={this.props.deletePost} />
+						<ConfirmDelete
+							{...props}
+							post={this.props.posts[props.match.params.postId]}
+							postId={props.match.params.postId}
+							onDeletePost={this.props.deletePost}
+						/>
 					)}
 					exact
 				/>
@@ -41,13 +48,9 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = currentState => {
-	const postsByIdObject = currentState.posts.byId;
-
-	return {
-		posts: Object.keys(postsByIdObject).map(key => postsByIdObject[key]),
-	};
-};
+const mapStateToProps = currentState => ({
+	posts: currentState.posts.byId,
+});
 
 const mapDispatchToProps = dispatch => ({
 	onUpvotePost: postId => {
@@ -62,7 +65,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 App.propTypes = {
-	posts: PropTypes.array.isRequired,
+	posts: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
