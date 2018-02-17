@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
+import { Link } from 'react-router-dom';
+
 const PostDetailsRow = ({ post }) => (
 	<tr className="post-details-row">
 		<td colSpan="2" />
@@ -20,6 +22,8 @@ const PostDetailsRow = ({ post }) => (
 					post.comments.length === 1 ? 'comment' : 'comments'
 				}`}
 			</a>
+			|
+			<Link to="/confirm-delete">delete</Link>
 		</td>
 	</tr>
 );
