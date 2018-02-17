@@ -77,7 +77,10 @@ const ConfirmDelete = ({ post, onDeletePost, match, history }) => (
 );
 
 ConfirmDelete.propTypes = {
-	post: postPropType,
+	post: postPropType.isRequired,
+	onDeletePost: PropTypes.func.isRequired,
+	match: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
 };
 
 export default ConfirmDelete;
