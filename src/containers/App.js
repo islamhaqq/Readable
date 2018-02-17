@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
 import Home from '../components/Home';
+import ConfirmDelete from '../components/ConfirmDelete';
 import Submit from '../components/Submit';
-import { upvotePost, createPost } from '../actions';
+import { upvotePost, createPost, deletePost } from '../actions';
 
 class App extends Component {
 	render() {
@@ -27,6 +28,14 @@ class App extends Component {
 					exact
 					render={() => <Submit onSubmitNewPost={this.props.onSubmitNewPost} />}
 				/>
+
+				<Route
+					path="/confirm-delete/:postId"
+					render={props => (
+						<ConfirmDelete {...props} onDeletePost={this.props.deletePost} />
+					)}
+					exact
+				/>
 			</div>
 		);
 	}
@@ -46,6 +55,9 @@ const mapDispatchToProps = dispatch => ({
 	},
 	onSubmitNewPost: postDataToSubmit => {
 		dispatch(createPost(postDataToSubmit));
+	},
+	deletePost: postId => {
+		dispatch(deletePost(postId));
 	},
 });
 
