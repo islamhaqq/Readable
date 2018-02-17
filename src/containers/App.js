@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
 import Home from '../components/Home';
+import Submit from '../components/Submit';
 import NavBar from '../components/NavBar';
 import TableSpacerRow from '../components/TableSpacerRow';
 
@@ -25,7 +26,7 @@ class App extends Component {
 					render={() => <Home posts={this.props.posts} />}
 				/>
 
-				<Route path="/submit" />
+				<Route path="/submit" exact component={Submit} />
 			</div>
 		);
 	}
