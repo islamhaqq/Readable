@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar';
 import TableSpacerRow from '../components/TableSpacerRow';
 import Post from '../components/Post';
 
-const Home = ({ posts }) => (
+const Home = ({ posts, onUpvotePost }) => (
 	<div>
 		<table className="readable">
 			<tbody className="readable-content">
@@ -17,7 +17,12 @@ const Home = ({ posts }) => (
 					<td>
 						<table className="home-content">
 							{posts.map((post, index) => (
-								<Post post={post} rank={index + 1} key={index} />
+								<Post
+									post={post}
+									onUpvote={onUpvotePost}
+									rank={index + 1}
+									key={index}
+								/>
 							))}
 						</table>
 					</td>
@@ -29,6 +34,7 @@ const Home = ({ posts }) => (
 
 Home.propTypes = {
 	posts: PropTypes.array.isRequired,
+	onUpvotePost: PropTypes.func.isRequired,
 };
 
 export default Home;
