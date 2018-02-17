@@ -23,7 +23,7 @@ const PostDetailsRow = ({ post }) => (
 				}`}
 			</a>
 			|
-			<Link to="/confirm-delete">delete</Link>
+			<Link to={`/confirm-delete/${post.id}`}>delete</Link>
 		</td>
 	</tr>
 );
