@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SubmitForm = () => (
+const SubmitForm = ({ onSubmitNewPost }) => (
 	<tr>
 		<td>
 			<label>Author</label>
@@ -12,6 +12,10 @@ const SubmitForm = () => (
 
 			<label>Body</label>
 			<textarea />
+
+			<button type="submit" onClick={() => onSubmitNewPost()}>
+				Submit
+			</button>
 		</td>
 	</tr>
 );
