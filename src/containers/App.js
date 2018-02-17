@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
 import NavBar from '../components/NavBar';
 import Home from './Home';
@@ -15,10 +16,14 @@ class App extends Component {
 						<NavBar />
 
 						<TableSpacerRow height="10px" />
-
-						<Home posts={this.props.posts} />
 					</tbody>
 				</table>
+
+				<Route
+					path="/"
+					exact
+					render={() => <Home posts={this.props.posts} />}
+				/>
 			</div>
 		);
 	}
