@@ -12,18 +12,18 @@ const Home = ({ posts }) => (
 				<NavBar />
 
 				<TableSpacerRow height="10px" />
+
+				<tr className="home-container">
+					<td>
+						<table className="home-content">
+							{posts.map((post, index) => (
+								<Post post={post} rank={index + 1} key={index} />
+							))}
+						</table>
+					</td>
+				</tr>
 			</tbody>
 		</table>
-
-		<tr className="home-container">
-			<td>
-				<table className="home-content">
-					{posts.map((post, index) => (
-						<Post post={post} rank={index + 1} key={index} />
-					))}
-				</table>
-			</td>
-		</tr>
 	</div>
 );
 
