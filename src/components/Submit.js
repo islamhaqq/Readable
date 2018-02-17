@@ -1,41 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
+import SubmitNavBar from './SubmitNavBar';
 import TableSpacerRow from './TableSpacerRow';
 
 const Submit = () => (
 	<center>
 		<table>
 			<tbody>
-				<tr>
-					<td bgcolor="#ff6600">
-						<table
-							border="0"
-							cellPadding="0"
-							cellSpacing="0"
-							width="100%"
-							style={{ padding: '2px' }}
-						>
-							<tbody>
-								<tr>
-									<td>
-										<Link to="/">
-											<b>Home</b>
-										</Link>
-									</td>
-								</tr>
-								<tr>
-									<td style={{ lineHeight: '12pt', height: '10px' }}>
-										<span>
-											<b>Submit</b>
-										</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-
+				<SubmitNavBar />
 				<TableSpacerRow height="10" />
 			</tbody>
 
@@ -43,6 +15,9 @@ const Submit = () => (
 				<td>
 					<label>Title</label>
 					<input type="text" />
+
+					<label>Body</label>
+					<textarea />
 				</td>
 			</tr>
 		</table>
