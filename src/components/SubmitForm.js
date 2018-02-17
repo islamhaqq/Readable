@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import uniqid from 'uniqid';
 
 const SubmitForm = ({ onSubmitNewPost }) => (
 	<tr>

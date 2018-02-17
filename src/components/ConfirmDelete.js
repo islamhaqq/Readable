@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import createBrowserHistory from 'history/createBrowserHistory';
 
 import PostDetailsRow from './PostDetailsRow';
-import TableSpacerRow from './TableSpacerRow';
 import postPropType from '../utils/proptypes/postPropType';
 
 const ConfirmDelete = ({ post, onDeletePost, match, history }) => (
