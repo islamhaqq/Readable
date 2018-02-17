@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PostPrimaryRow = () => (
+const PostPrimaryRow = ({ post }) => (
 	<tr className="post-main-row">
 		<td className="post-rank">
 			<span>1.</span>
@@ -11,7 +11,7 @@ const PostPrimaryRow = () => (
 			<span>^</span>
 		</td>
 
-		<td className="post-title">Let's talk about usernames</td>
+		<td className="post-title">{post.title}</td>
 	</tr>
 );
 
