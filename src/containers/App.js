@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import NavBar from '../components/NavBar';
 import Home from './Home';
@@ -26,5 +27,9 @@ class App extends Component {
 const mapStateToProps = currentState => ({
 	posts: Object.entries(currentState.posts.posts.byId),
 });
+
+App.propTypes = {
+	posts: PropTypes.array.isRequired,
+};
 
 export default connect(mapStateToProps)(App);
