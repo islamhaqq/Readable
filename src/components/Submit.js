@@ -5,15 +5,15 @@ import SubmitNavBar from './SubmitNavBar';
 import TableSpacerRow from './TableSpacerRow';
 import SubmitForm from './SubmitForm';
 
-const Submit = () => (
+const Submit = ({ onSubmitNewPost }) => (
 	<center>
 		<table>
 			<tbody>
 				<SubmitNavBar />
 				<TableSpacerRow height="10" />
-			</tbody>
 
-			<SubmitForm />
+				<SubmitForm onSubmitNewPost={onSubmitNewPost} />
+			</tbody>
 		</table>
 	</center>
 );

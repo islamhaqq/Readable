@@ -22,7 +22,11 @@ class App extends Component {
 					)}
 				/>
 
-				<Route path="/submit" exact component={Submit} />
+				<Route
+					path="/submit"
+					exact
+					render={() => <Submit onSubmitNewPost={this.props.onSubmitNewPost} />}
+				/>
 			</div>
 		);
 	}
@@ -39,6 +43,9 @@ const mapStateToProps = currentState => {
 const mapDispatchToProps = dispatch => ({
 	onUpvotePost: postId => {
 		dispatch(upvotePost(postId));
+	},
+	onSubmitNewPost: postDataToSubmit => {
+		dispatch(createPost(postDataToSubmit));
 	},
 });
 
