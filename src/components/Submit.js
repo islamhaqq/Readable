@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TableSpacerRow from './TableSpacerRow';
+
 const Submit = () => (
 	<center>
 		<table>
@@ -8,14 +10,14 @@ const Submit = () => (
 					<td bgcolor="#ff6600">
 						<table
 							border="0"
-							cellpadding="0"
-							cellspacing="0"
+							cellPadding="0"
+							cellSpacing="0"
 							width="100%"
 							style={{ padding: '2px' }}
 						>
 							<tbody>
 								<tr>
-									<td style={{ 'line-height': '12pt', height: '10px' }}>
+									<td style={{ lineHeight: '12pt', height: '10px' }}>
 										<span>
 											<b>Submit</b>
 										</span>
@@ -25,9 +27,16 @@ const Submit = () => (
 						</table>
 					</td>
 				</tr>
+
+				<TableSpacerRow height="10" />
 			</tbody>
-			<label>Title</label>
-			<input type="text" />
+
+			<tr>
+				<td>
+					<label>Title</label>
+					<input type="text" />
+				</td>
+			</tr>
 		</table>
 	</center>
 );
