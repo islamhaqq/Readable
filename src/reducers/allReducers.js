@@ -10,6 +10,7 @@ export function posts(previousState = initialState, action) {
 			return {
 				...previousState,
 				posts: {
+					...previousState.posts,
 					byId: {
 						...previousState.posts.byId,
 						[action.payload.postId]: {
