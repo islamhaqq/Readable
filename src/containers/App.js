@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
+import Home from '../components/Home';
 import NavBar from '../components/NavBar';
-import Home from './Home';
 import TableSpacerRow from '../components/TableSpacerRow';
 
 class App extends Component {
@@ -24,6 +24,8 @@ class App extends Component {
 					exact
 					render={() => <Home posts={this.props.posts} />}
 				/>
+
+				<Route path="/submit" />
 			</div>
 		);
 	}
