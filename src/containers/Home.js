@@ -9,7 +9,9 @@ class Home extends Component {
 			<tr className="home-container">
 				<td>
 					<table className="home-content">
-						{this.props.posts.map(post => <Post post={post} />)}
+						{this.props.posts.map((post, rank) => (
+							<Post post={post} rank={rank + 1} />
+						))}
 					</table>
 				</td>
 			</tr>

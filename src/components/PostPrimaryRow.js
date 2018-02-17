@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PostPrimaryRow = ({ post }) => (
+const PostPrimaryRow = ({ post, rank }) => (
 	<tr className="post-main-row">
 		<td className="post-rank">
-			<span>1.</span>
+			<span>{`${rank}.`}</span>
 		</td>
 
 		<td className="post-upvote-container">
@@ -16,7 +16,8 @@ const PostPrimaryRow = ({ post }) => (
 );
 
 PostPrimaryRow.proptypes = {
-	post: PropTypes.object.required,
+	post: PropTypes.object.isRequired,
+	rank: PropTypes.number.isRequired,
 };
 
 export default PostPrimaryRow;

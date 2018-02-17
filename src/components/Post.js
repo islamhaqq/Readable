@@ -5,9 +5,9 @@ import PostPrimaryRow from './PostPrimaryRow';
 import TableSpacerRow from './TableSpacerRow';
 import PostDetailsRow from './PostDetailsRow';
 
-const Post = ({ post }) => (
+const Post = ({ post, rank }) => (
 	<tbody className="post-container">
-		<PostPrimaryRow post={post} />
+		<PostPrimaryRow post={post} rank={rank} />
 
 		<PostDetailsRow post={post} />
 
@@ -17,6 +17,7 @@ const Post = ({ post }) => (
 
 Post.proptypes = {
 	post: PropTypes.array.isRequired,
+	rank: PropTypes.number.isRequired,
 };
 
 export default Post;
