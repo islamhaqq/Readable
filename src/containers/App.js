@@ -29,7 +29,7 @@ class App extends Component {
 }
 
 const mapStateToProps = currentState => {
-	const postsByIdObject = currentState.posts.posts.byId;
+	const postsByIdObject = currentState.posts.byId;
 
 	return {
 		posts: Object.keys(postsByIdObject).map(key => postsByIdObject[key]),
