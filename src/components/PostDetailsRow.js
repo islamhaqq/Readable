@@ -7,18 +7,18 @@ const PostDetailsRow = ({ post }) => (
 		<td colSpan="2" />
 
 		<td className="post-details-container">
-			<span className="post-points">{`${post.points} points`}</span>
+			<span className="post-points">{`${post.points} points by `}</span>
 			<a href="#" className="post-author">
 				{post.author}
 			</a>
 			<span className="post-timestamp">
-				{moment(post.timestamp)
+				{` ${moment(post.timestamp)
 					.startOf('second')
-					.fromNow()}
+					.fromNow()} `}
 			</span>
 			|
 			<a className="post-details-view-comments-link">
-				{`${post.comments.length} ${
+				{` ${post.comments.length} ${
 					post.comments.length === 1 ? 'comment' : 'comments'
 				}`}
 			</a>
