@@ -18,7 +18,9 @@ const Home = ({ posts }) => (
 		<tr className="home-container">
 			<td>
 				<table className="home-content">
-					{posts.map((post, rank) => <Post post={post} rank={rank + 1} />)}
+					{posts.map((post, index) => (
+						<Post post={post} rank={index + 1} key={index} />
+					))}
 				</table>
 			</td>
 		</tr>
