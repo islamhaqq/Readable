@@ -1,12 +1,9 @@
-import {
-	UPVOTE_POST_ACTION_TYPE,
-	CREATE_POST_ACTION_TYPE,
-} from '../actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 import initialState from './initialState';
 
 export function posts(previousState = initialState.posts, action) {
 	switch (action.type) {
-		case UPVOTE_POST_ACTION_TYPE:
+		case actionTypes.UPVOTE_POST_ACTION_TYPE:
 			return {
 				...previousState,
 				byId: {
@@ -18,7 +15,7 @@ export function posts(previousState = initialState.posts, action) {
 				},
 			};
 
-		case CREATE_POST_ACTION_TYPE:
+		case actionTypes.CREATE_POST_ACTION_TYPE:
 			return {
 				...previousState,
 				byId: {

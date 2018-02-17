@@ -9,10 +9,10 @@ export const upvotePost = postId => ({
 	},
 });
 
-export const deletePost = postId => ({
+export const deletePost = id => ({
 	type: actionTypes.DELETE_POST_ACTION_TYPE,
 	payload: {
-		postId,
+		id,
 	},
 });
 
