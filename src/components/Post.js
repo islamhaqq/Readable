@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import postPropType from '../utils/proptypes/postPropType';
 
 import PostPrimaryRow from './PostPrimaryRow';
 import TableSpacerRow from './TableSpacerRow';
@@ -15,8 +16,8 @@ const Post = ({ post, rank, onUpvote }) => (
 	</tbody>
 );
 
-Post.proptypes = {
-	post: PropTypes.array.isRequired,
+Post.propTypes = {
+	post: postPropType,
 	rank: PropTypes.number.isRequired,
 	onUpvote: PropTypes.func.isRequired,
 };
