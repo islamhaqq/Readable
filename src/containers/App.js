@@ -12,7 +12,9 @@ class App extends Component {
 				<table className="readable">
 					<tbody className="readable-content">
 						<NavBar />
+
 						<TableSpacerRow height="10px" />
+
 						<Home posts={this.props.posts} />
 					</tbody>
 				</table>
@@ -22,7 +24,7 @@ class App extends Component {
 }
 
 const mapStateToProps = currentState => ({
-	posts: currentState.posts.posts.byId
-})
+	posts: Object.entries(currentState.posts.posts.byId),
+});
 
 export default connect(mapStateToProps)(App);

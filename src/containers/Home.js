@@ -9,7 +9,7 @@ class Home extends Component {
 			<tr className="home-container">
 				<td>
 					<table className="home-content">
-						{Object.entries(this.props.posts).map(post => <Post post={post} />)}
+						{this.props.posts.map(post => <Post post={post} />)}
 					</table>
 				</td>
 			</tr>
@@ -18,7 +18,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-	posts: PropTypes.object.required,
+	posts: PropTypes.array.required,
 };
 
 export default Home;
