@@ -17,7 +17,11 @@ const PostDetailsRow = ({ post }) => (
 					.fromNow()}
 			</span>
 			|
-			<a className="post-details-view-comments-link">218 comments</a>
+			<a className="post-details-view-comments-link">
+				{`${post.comments.length} ${
+					post.comments.length === 1 ? 'comment' : 'comments'
+				}`}
+			</a>
 		</td>
 	</tr>
 );
