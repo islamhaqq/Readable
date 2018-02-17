@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => (
 	<tr className="navigation-bar-container">
@@ -10,7 +11,7 @@ const NavBar = () => (
 							<a href="#">Readable</a>
 							<a href="#">Non-Fiction</a>
 							<a href="#">Fiction</a>
-							<a href="#">Submit</a>
+							<Link to="/submit">Submit</Link>
 						</td>
 						<td className="navigation-bar-profile-actions">
 							<a href="#">Syed Aman</a>

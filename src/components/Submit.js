@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import TableSpacerRow from './TableSpacerRow';
 
@@ -16,6 +17,13 @@ const Submit = () => (
 							style={{ padding: '2px' }}
 						>
 							<tbody>
+								<tr>
+									<td>
+										<Link to="/">
+											<b>Home</b>
+										</Link>
+									</td>
+								</tr>
 								<tr>
 									<td style={{ lineHeight: '12pt', height: '10px' }}>
 										<span>
