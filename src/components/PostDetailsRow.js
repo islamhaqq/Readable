@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const PostDetailsRow = () => (
+const PostDetailsRow = ({ post }) => (
 	<tr className="post-details-row">
 		<td colSpan="2" />
 
 		<td className="post-details-container">
-			<span className="post-points">449 points</span>
+			<span className="post-points">{`${post.points} points`}</span>
 			<a href="#" className="post-author">
 				syedaman
 			</a>
@@ -15,5 +16,9 @@ const PostDetailsRow = () => (
 		</td>
 	</tr>
 );
+
+PostDetailsRow.propTypes = {
+	post: PropTypes.object.isRequired,
+};
 
 export default PostDetailsRow;
