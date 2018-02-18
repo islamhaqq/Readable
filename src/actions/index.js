@@ -23,14 +23,6 @@ export const createPost = ({ title, author, body }) => ({
 	},
 });
 
-export const deletePost = id => ({
-	type: actionTypes.DELETE_POST_ACTION_TYPE,
-	payload: {
-		id,
-		isDeleted: true,
-	},
-});
-
 export const editPost = ({ id, title, body }) => ({
 	type: actionTypes.EDIT_POST_ACTION_TYPE,
 	payload: {
@@ -40,17 +32,39 @@ export const editPost = ({ id, title, body }) => ({
 	},
 });
 
-export const addComment = ({ author, body }) => ({
+export const deletePost = id => ({
+	type: actionTypes.DELETE_POST_ACTION_TYPE,
+	payload: {
+		id,
+		isDeleted: true,
+	},
+});
+
+export const addComment = ({ title, author, body }) => ({
 	type: actionTypes.ADD_COMMENT_ACTION_TYPE,
 	payload: {
+		id: uniqid(),
+		title,
 		author,
+		body,
+		points: 1,
+		isDeleted: false,
+		timestamp: Date.now(),
+	},
+});
+
+export const editComment = ({ id, title, body }) => ({
+	type: actionTypes.EDIT_COMMENT_ACTION_TYPE,
+	payload: {
+		id,
+		title,
 		body,
 	},
 });
 
-export const deleteComment = commentId => ({
+export const deleteComment = id => ({
 	type: actionTypes.DELETE_COMMENT_ACTION_TYPE,
 	payload: {
-		commentId,
+		id,
 	},
 });

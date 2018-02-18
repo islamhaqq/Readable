@@ -27,6 +27,18 @@ export function posts(previousState = initialState.posts, action) {
 				allIds: [...previousState.allIds, action.payload.id],
 			};
 
+		case actionTypes.EDIT_POST_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					[action.payload.id]: {
+						...previousState.byId[action.payload.id],
+						...action.payload,
+					},
+				},
+			};
+
 		case actionTypes.DELETE_POST_ACTION_TYPE:
 			const { allIds, byId } = previousState;
 
@@ -45,23 +57,44 @@ export function posts(previousState = initialState.posts, action) {
 				allIds: [...postIdsRemaining],
 			};
 
-		case actionTypes.EDIT_POST_ACTION_TYPE:
-			return {
-				...previousState,
-				byId: {
-					...previousState.byId,
-					[action.payload.id]: {
-						...previousState.byId[action.payload.id],
-						...action.payload,
-					},
-				},
-			};
-
 		default:
 			return previousState;
 	}
 }
 
-export function comments(previouState = initialState.comments, action) {
-	return previouState;
+export function comments(previousState = initialState.comments, action) {
+	switch (action.type) {
+		case actionTypes.ADD_COMMENT_ACTION_TYPE:
+			const { id, author, body, points, isDeleted, timestamp } = action.payload;
+
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					[id]: {
+						id,
+						author,
+						body,
+						points,
+						isDeleted,
+						timestamp,
+					},
+				},
+				allIds: [...previousState.allIds, id],
+			};
+
+		case actionTypes.EDIT_COMMENT_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byIds,
+				},
+			};
+
+		case actionTypes.DELETE_COMMENT_ACTION_TYPE:
+			return {};
+
+		default:
+			return previousState;
+	}
 }
