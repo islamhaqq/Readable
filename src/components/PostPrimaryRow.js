@@ -29,7 +29,7 @@ const PostPrimaryRow = ({
 PostPrimaryRow.propTypes = {
 	post: postPropType.isRequired,
 	rank: PropTypes.number,
-	onUpvote: PropTypes.func.isRequired,
+	onUpvote: PropTypes.func,
 	isRankDisplayed: PropTypes.bool.isRequired,
 	isVoteButtonDisplayed: PropTypes.bool.isRequired,
 };

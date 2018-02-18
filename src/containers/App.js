@@ -51,7 +51,6 @@ class App extends Component {
 							{...props}
 							post={this.props.posts[props.match.params.postId]}
 							onEditPost={this.props.editPost}
-							onUpvotePost={this.props.onUpvotePost}
 						/>
 					)}
 					exact

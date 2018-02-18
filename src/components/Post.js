@@ -36,8 +36,8 @@ Post.propTypes = {
 	post: postPropType.isRequired,
 	rank: PropTypes.number,
 	onUpvote: PropTypes.func,
-	isRankDisplayed: PropTypes.bool,
-	isVoteButtonDisplayed: PropTypes.bool,
+	isRankDisplayed: PropTypes.bool.isRequired,
+	isVoteButtonDisplayed: PropTypes.bool.isRequired,
 };
 
 export default Post;

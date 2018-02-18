@@ -6,7 +6,7 @@ import EditPostForm from './EditPostForm';
 import Post from './Post';
 import postPropType from '../utils/proptypes/postPropType';
 
-const EditPost = ({ post, onEditPost, onUpvotePost, history }) => (
+const EditPost = ({ post, onEditPost, history }) => (
 	<center>
 		<table>
 			<tbody>
@@ -32,7 +32,6 @@ const EditPost = ({ post, onEditPost, onUpvotePost, history }) => (
 EditPost.propTypes = {
 	post: postPropType.isRequired,
 	onEditPost: PropTypes.func.isRequired,
-	onUpvotePost: PropTypes.func.isRequired,
 };
 
 export default EditPost;
