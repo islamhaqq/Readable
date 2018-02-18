@@ -79,7 +79,7 @@ export function posts(previousState = initialState.posts, action) {
 export function comments(previousState = initialState.comments, action) {
 	switch (action.type) {
 		case actionTypes.ADD_COMMENT_ACTION_TYPE:
-			const { id, author, body, points, isDeleted, timestamp } = action.payload;
+			const { id, author, body, points, timestamp } = action.payload;
 
 			return {
 				...previousState,
@@ -90,7 +90,6 @@ export function comments(previousState = initialState.comments, action) {
 						author,
 						body,
 						points,
-						isDeleted,
 						timestamp,
 					},
 				},

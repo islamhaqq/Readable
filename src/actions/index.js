@@ -17,7 +17,6 @@ export const createPost = ({ title, author, body }) => ({
 		author,
 		body,
 		points: 1,
-		isDeleted: false,
 		timestamp: Date.now(),
 		comments: [],
 	},
@@ -36,7 +35,6 @@ export const deletePost = id => ({
 	type: actionTypes.DELETE_POST_ACTION_TYPE,
 	payload: {
 		id,
-		isDeleted: true,
 	},
 });
 
@@ -48,7 +46,6 @@ export const addComment = ({ id, postId, author, body }) => ({
 		author,
 		body,
 		points: 1,
-		isDeleted: false,
 		timestamp: Date.now(),
 	},
 });

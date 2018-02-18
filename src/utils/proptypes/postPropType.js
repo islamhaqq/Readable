@@ -6,7 +6,6 @@ const postPropType = PropTypes.shape({
 	author: PropTypes.string.isRequired,
 	body: PropTypes.string.isRequired,
 	points: PropTypes.number.isRequired,
-	isDeleted: PropTypes.bool.isRequired,
 	timestamp: PropTypes.number.isRequired,
 	comments: PropTypes.array.isRequired,
 });
