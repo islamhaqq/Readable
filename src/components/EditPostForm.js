@@ -29,7 +29,7 @@ const EditPostForm = ({ onEditPost, history }) => (
 					}
 				}}
 			>
-				Submit
+				Update
 			</button>
 		</td>
 	</tr>
