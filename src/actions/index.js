@@ -72,3 +72,17 @@ export const deleteComment = id => ({
 		id,
 	},
 });
+
+export const upvoteComment = commentId => ({
+	type: actionTypes.UPVOTE_COMMENT_ACTION_TYPE,
+	payload: {
+		commentId,
+	},
+});
+
+export const downvoteComment = commentId => ({
+	type: actionTypes.DOWNVOTE_COMMENT_ACTION_TYPE,
+	payload: {
+		commentId,
+	},
+});

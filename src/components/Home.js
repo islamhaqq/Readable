@@ -13,6 +13,8 @@ const Home = ({
 	allComments,
 	onUpvotePost,
 	onDownvotePost,
+	onUpvoteComment,
+	onDownvoteComment,
 	onAddCommentToPost,
 	match,
 }) => (
@@ -51,6 +53,8 @@ const Home = ({
 								)}
 								onUpvotePost={onUpvotePost}
 								onDownvotePost={onDownvotePost}
+								onUpvoteComment={onUpvoteComment}
+								onDownvoteComment={onDownvoteComment}
 								onAddCommentToPost={onAddCommentToPost}
 							/>
 						);
@@ -66,6 +70,8 @@ Home.propTypes = {
 	allComments: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 	onDownvotePost: PropTypes.func.isRequired,
+	onUpvoteComment: PropTypes.func.isRequired,
+	onDownvoteComment: PropTypes.func.isRequired,
 	onAddCommentToPost: PropTypes.func.isRequired,
 };
 

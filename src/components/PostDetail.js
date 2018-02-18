@@ -5,12 +5,16 @@ import moment from 'moment';
 
 import postPropType from '../utils/proptypes/postPropType';
 import Post from './Post';
+import UpvoteButton from './UpvoteButton';
+import DownvoteButton from './DownvoteButton';
 
 const PostDetail = ({
 	post,
 	comments,
 	onUpvotePost,
 	onDownvotePost,
+	onUpvoteComment,
+	onDownvoteComment,
 	onAddCommentToPost,
 }) => (
 	<tr className="post-detail-container">
@@ -73,16 +77,30 @@ const PostDetail = ({
 							<div className="comment-section">
 								<h2 className="comment-section-header">Comments</h2>
 								<ul className="comment-section-comment-list">
-									{comments.map(({ id, author, body, points, timestamp }) => (
-										<li key={id} className="comment">
-											<h6 className="comment-author">{`${author} ${moment(
-												timestamp,
-											)
-												.startOf('second')
-												.fromNow()}`}</h6>
-											<p className="comment-author">{body}</p>
-										</li>
-									))}
+									{comments.map(comment => {
+										const { id, author, body, points, timestamp } = comment;
+
+										return (
+											<li key={id} className="comment">
+												<h6 className="comment-author">
+													{`${points} points by ${author} ${moment(timestamp)
+														.startOf('second')
+														.fromNow()}`}
+												</h6>
+
+												<p className="comment-author">{body}</p>
+
+												<UpvoteButton
+													thingToUpvote={comment}
+													onUpvote={onUpvoteComment}
+												/>
+												<DownvoteButton
+													thingToDownvote={comment}
+													onDownvote={onDownvoteComment}
+												/>
+											</li>
+										);
+									})}
 								</ul>
 							</div>
 						</td>
@@ -95,8 +113,10 @@ const PostDetail = ({
 
 Post.propTypes = {
 	post: postPropType,
-	onUpvote: PropTypes.func.isRequired,
-	onDownvote: PropTypes.func.isRequired,
+	onUpvotePost: PropTypes.func.isRequired,
+	onDownvotePost: PropTypes.func.isRequired,
+	onUpvoteComment: PropTypes.func.isRequired,
+	onDownvoteComment: PropTypes.func.isRequired,
 	comments: PropTypes.array.isRequired,
 	onAddCommentToPost: PropTypes.func.isRequired,
 };

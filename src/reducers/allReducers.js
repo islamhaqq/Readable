@@ -119,6 +119,30 @@ export function comments(previousState = initialState.comments, action) {
 		case actionTypes.DELETE_COMMENT_ACTION_TYPE:
 			return {};
 
+		case actionTypes.UPVOTE_COMMENT_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					[action.payload.commentId]: {
+						...previousState.byId[action.payload.commentId],
+						points: previousState.byId[action.payload.commentId].points + 1,
+					},
+				},
+			};
+
+		case actionTypes.DOWNVOTE_COMMENT_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					[action.payload.commentId]: {
+						...previousState.byId[action.payload.commentId],
+						points: previousState.byId[action.payload.commentId].points - 1,
+					},
+				},
+			};
+
 		default:
 			return previousState;
 	}
