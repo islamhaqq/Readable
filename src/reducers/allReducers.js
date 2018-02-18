@@ -45,6 +45,18 @@ export function posts(previousState = initialState.posts, action) {
 				allIds: [...postIdsRemaining],
 			};
 
+		case actionTypes.EDIT_POST_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					[action.payload.id]: {
+						...previousState.byId[action.payload.id],
+						...action.payload,
+					},
+				},
+			};
+
 		default:
 			return previousState;
 	}

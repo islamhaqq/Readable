@@ -9,13 +9,6 @@ export const upvotePost = postId => ({
 	},
 });
 
-export const deletePost = id => ({
-	type: actionTypes.DELETE_POST_ACTION_TYPE,
-	payload: {
-		id,
-	},
-});
-
 export const createPost = ({ title, author, body }) => ({
 	type: actionTypes.CREATE_POST_ACTION_TYPE,
 	payload: {
@@ -27,6 +20,24 @@ export const createPost = ({ title, author, body }) => ({
 		isDeleted: false,
 		timestamp: Date.now(),
 		comments: [],
+	},
+});
+
+export const deletePost = id => ({
+	type: actionTypes.DELETE_POST_ACTION_TYPE,
+	payload: {
+		id,
+		isDeleted: true,
+	},
+});
+
+export const editPost = ({ id, title, author, body }) => ({
+	type: actionTypes.EDIT_POST_ACTION_TYPE,
+	payload: {
+		id,
+		title,
+		author,
+		body,
 	},
 });
 
