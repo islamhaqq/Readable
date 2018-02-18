@@ -8,7 +8,7 @@ const PostDetail = ({ post, onUpvotePost }) => (
 	<tr className="post-detail-container">
 		<td>
 			<table>
-				<Post post={post} rank={1} onUpvote={onUpvotePost} />
+				<Post post={post} onUpvote={onUpvotePost} isRankDisplayed={false} />
 
 				<tbody>
 					<tr>
@@ -33,7 +33,6 @@ const PostDetail = ({ post, onUpvotePost }) => (
 
 Post.propTypes = {
 	post: postPropType,
-	rank: PropTypes.number.isRequired,
 	onUpvote: PropTypes.func.isRequired,
 };
 

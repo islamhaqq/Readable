@@ -12,6 +12,7 @@ const PostsBoard = ({ posts, onUpvotePost }) => (
 						onUpvote={onUpvotePost}
 						rank={index + 1}
 						key={index}
+						isRankDisplayed={true}
 					/>
 				))}
 			</table>

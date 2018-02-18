@@ -6,9 +6,9 @@ import PostRank from './PostRank';
 import PostUpvote from './PostUpvote';
 import postPropType from '../utils/proptypes/postPropType';
 
-const PostPrimaryRow = ({ post, rank, onUpvote }) => (
+const PostPrimaryRow = ({ post, rank, onUpvote, isRankDisplayed }) => (
 	<tr className="post-main-row">
-		<PostRank rank={rank} />
+		{isRankDisplayed ? <PostRank rank={rank} /> : null}
 
 		<PostUpvote post={post} onUpvote={onUpvote} />
 
@@ -20,8 +20,9 @@ const PostPrimaryRow = ({ post, rank, onUpvote }) => (
 
 PostPrimaryRow.propTypes = {
 	post: postPropType.isRequired,
-	rank: PropTypes.number.isRequired,
+	rank: PropTypes.number,
 	onUpvote: PropTypes.func.isRequired,
+	isRankDisplayed: PropTypes.bool.isRequired,
 };
 
 export default PostPrimaryRow;
