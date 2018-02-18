@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import PostRank from './PostRank';
-import PostUpvote from './PostUpvote';
-import PostDownvote from './PostDownvote';
+import UpvoteButton from './UpvoteButton';
+import DownvoteButton from './DownvoteButton';
 import postPropType from '../utils/proptypes/postPropType';
 
 const PostPrimaryRow = ({
@@ -20,8 +20,8 @@ const PostPrimaryRow = ({
 
 		{isVoteButtonDisplayed ? (
 			<td className="post-vote-container">
-				<PostUpvote post={post} onUpvote={onUpvote} />
-				<PostDownvote post={post} onDownvote={onDownvote} />
+				<UpvoteButton thingToUpvote={post} onUpvote={onUpvote} />
+				<DownvoteButton thingToDownvote={post} onDownvote={onDownvote} />
 			</td>
 		) : null}
 
