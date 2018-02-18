@@ -5,7 +5,7 @@ import postPropType from '../utils/proptypes/postPropType';
 
 const PostUpvote = ({ post, onUpvote }) => (
 	<td className="post-upvote-container">
-		<span onClick={() => onUpvote(post.id)}>^</span>
+		<span onClick={() => onUpvote(post.id)}>▲</span>
 	</td>
 );
 
