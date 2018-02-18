@@ -19,7 +19,6 @@ const PostDetail = ({ post, onUpvotePost }) => (
 					<tr>
 						<td>
 							<p className="post-body">{post.body}</p>
-							<span className="post-vote-score">{post.points}</span>
 							<div className="comment-section">
 								<h2 className="comment-section-header">Comments</h2>
 								<ul className="comment-section-comment-list">
