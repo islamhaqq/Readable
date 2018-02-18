@@ -6,34 +6,38 @@ import PostPrimaryRow from './PostPrimaryRow';
 import TableSpacerRow from './TableSpacerRow';
 import PostDetailsRow from './PostDetailsRow';
 
-const Post = ({ post, rank, onUpvote, isRankDisplayed }) => (
-	<tbody className="post-container">
-		{isRankDisplayed ? (
-			<PostPrimaryRow
-				post={post}
-				onUpvote={onUpvote}
-				rank={rank}
-				isRankDisplayed={isRankDisplayed}
-			/>
-		) : (
-			<PostPrimaryRow
-				post={post}
-				onUpvote={onUpvote}
-				isRankDisplayed={isRankDisplayed}
-			/>
-		)}
+const Post = ({
+	post,
+	rank,
+	onUpvote,
+	isRankDisplayed = false,
+	isVoteButtonDisplayed = false,
+}) => {
+	const postPrimaryRowProps = {
+		post,
+		onUpvote,
+		rank,
+		isRankDisplayed,
+		isVoteButtonDisplayed,
+	};
 
-		<PostDetailsRow post={post} />
+	return (
+		<tbody className="post-container">
+			<PostPrimaryRow {...postPrimaryRowProps} />
 
-		<TableSpacerRow height="20px" />
-	</tbody>
-);
+			<PostDetailsRow post={post} />
+
+			<TableSpacerRow height="20px" />
+		</tbody>
+	);
+};
 
 Post.propTypes = {
 	post: postPropType.isRequired,
 	rank: PropTypes.number,
-	onUpvote: PropTypes.func.isRequired,
-	isRankDisplayed: PropTypes.bool.isRequired,
+	onUpvote: PropTypes.func,
+	isRankDisplayed: PropTypes.bool,
+	isVoteButtonDisplayed: PropTypes.bool,
 };
 
 export default Post;

@@ -8,7 +8,12 @@ const PostDetail = ({ post, onUpvotePost }) => (
 	<tr className="post-detail-container">
 		<td>
 			<table>
-				<Post post={post} onUpvote={onUpvotePost} isRankDisplayed={false} />
+				<Post
+					post={post}
+					onUpvote={onUpvotePost}
+					isRankDisplayed={false}
+					isVoteButtonDisplayed={true}
+				/>
 
 				<tbody>
 					<tr>
