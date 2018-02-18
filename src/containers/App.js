@@ -7,6 +7,7 @@ import Home from '../components/Home';
 import ConfirmDelete from '../components/ConfirmDelete';
 import EditPost from '../components/EditPost';
 import Submit from '../components/Submit';
+import NotFound from '../components/NotFound';
 import * as actionCreators from '../actions';
 
 class App extends Component {
@@ -36,25 +37,37 @@ class App extends Component {
 
 				<Route
 					path="/confirm-delete/:postId"
-					render={props => (
-						<ConfirmDelete
-							{...props}
-							post={this.props.posts[props.match.params.postId]}
-							onDeletePost={this.props.deletePost}
-						/>
-					)}
+					render={props => {
+						const post = this.props.posts[props.match.params.postId];
+
+						if (!post) return <NotFound />;
+
+						return (
+							<ConfirmDelete
+								{...props}
+								post={post}
+								onDeletePost={this.props.deletePost}
+							/>
+						);
+					}}
 					exact
 				/>
 
 				<Route
 					path="/edit/:postId"
-					render={props => (
-						<EditPost
-							{...props}
-							post={this.props.posts[props.match.params.postId]}
-							onEditPost={this.props.editPost}
-						/>
-					)}
+					render={props => {
+						const post = this.props.posts[props.match.params.postId];
+
+						if (!post) return <NotFound />;
+
+						return (
+							<EditPost
+								{...props}
+								post={this.props.posts[props.match.params.postId]}
+								onEditPost={this.props.editPost}
+							/>
+						);
+					}}
 					exact
 				/>
 			</div>
