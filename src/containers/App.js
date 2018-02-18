@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Home from '../components/Home';
 import ConfirmDelete from '../components/ConfirmDelete';
 import EditPost from '../components/EditPost';
 import Submit from '../components/Submit';
-import NotFound from '../components/NotFound';
 import * as actionCreators from '../actions';
 
 class App extends Component {
 	render() {
 		return (
-			<Switch>
+			<div>
 				<Route
 					path="/"
 					render={props => (
@@ -58,9 +57,7 @@ class App extends Component {
 					)}
 					exact
 				/>
-
-				<Route path="*" component={NotFound} />
-			</Switch>
+			</div>
 		);
 	}
 }
