@@ -10,8 +10,8 @@ const PostPrimaryRow = ({
 	post,
 	rank,
 	onUpvote,
-	isRankDisplayed,
-	isVoteButtonDisplayed,
+	isRankDisplayed = false,
+	isVoteButtonDisplayed = false,
 }) => (
 	<tr className="post-main-row">
 		{isRankDisplayed ? <PostRank rank={rank} /> : null}
