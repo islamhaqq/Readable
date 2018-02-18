@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import NavBar from '../components/NavBar';
 import TableSpacerRow from '../components/TableSpacerRow';
 import PostsBoard from '../components/PostsBoard';
 import PostDetail from '../components/PostDetail';
+import NotFound from '../components/NotFound';
 
 const Home = ({
 	posts,
@@ -21,35 +22,39 @@ const Home = ({
 
 				<TableSpacerRow height="10px" />
 
-				<Route
-					path="/"
-					exact
-					render={() => (
-						<PostsBoard
-							posts={Object.keys(posts).map(key => posts[key])}
-							onUpvotePost={onUpvotePost}
-						/>
-					)}
-				/>
-
-				<Route
-					path="/post/:postId"
-					render={props => {
-						const { postId } = props.match.params;
-						const post = posts[postId];
-
-						return (
-							<PostDetail
-								post={post}
-								comments={post.comments.map(
-									commentId => allComments[commentId],
-								)}
+				<Switch>
+					<Route
+						path="/"
+						exact
+						render={() => (
+							<PostsBoard
+								posts={Object.keys(posts).map(key => posts[key])}
 								onUpvotePost={onUpvotePost}
-								onAddCommentToPost={onAddCommentToPost}
 							/>
-						);
-					}}
-				/>
+						)}
+					/>
+
+					<Route
+						path="/post/:postId"
+						render={props => {
+							const { postId } = props.match.params;
+							const post = posts[postId];
+
+							return (
+								<PostDetail
+									post={post}
+									comments={post.comments.map(
+										commentId => allComments[commentId],
+									)}
+									onUpvotePost={onUpvotePost}
+									onAddCommentToPost={onAddCommentToPost}
+								/>
+							);
+						}}
+					/>
+
+					<Route path="*" component={NotFound} />
+				</Switch>
 			</tbody>
 		</table>
 	</div>
