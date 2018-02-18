@@ -19,7 +19,7 @@ class App extends Component {
 						<Home
 							posts={this.props.posts}
 							allComments={this.props.allComments}
-							onUpvotePost={this.props.onUpvotePost}
+							onUpvotePost={this.props.upvotePost}
 							{...props}
 						/>
 					)}
@@ -67,7 +67,7 @@ const mapStateToProps = currentState => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	onUpvotePost: postId => dispatch(upvotePost(postId)),
+	upvotePost: postId => dispatch(upvotePost(postId)),
 	onSubmitNewPost: postDataToSubmit => dispatch(createPost(postDataToSubmit)),
 	deletePost: postId => dispatch(deletePost(postId)),
 	editPost: postDataToSubmit => dispatch(editPost(postDataToSubmit)),
