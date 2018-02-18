@@ -5,8 +5,9 @@ import { Route } from 'react-router-dom';
 
 import Home from '../components/Home';
 import ConfirmDelete from '../components/ConfirmDelete';
+import EditPost from '../components/EditPost';
 import Submit from '../components/Submit';
-import { upvotePost, createPost, deletePost } from '../actions';
+import { upvotePost, createPost, deletePost, editPost } from '../actions';
 
 class App extends Component {
 	render() {
@@ -37,8 +38,20 @@ class App extends Component {
 						<ConfirmDelete
 							{...props}
 							post={this.props.posts[props.match.params.postId]}
-							postId={props.match.params.postId}
 							onDeletePost={this.props.deletePost}
+						/>
+					)}
+					exact
+				/>
+
+				<Route
+					path="/edit/:postId"
+					render={props => (
+						<EditPost
+							{...props}
+							post={this.props.posts[props.match.params.postId]}
+							onEditPost={this.props.editPost}
+							onUpvotePost={this.props.onUpvotePost}
 						/>
 					)}
 					exact
@@ -53,15 +66,10 @@ const mapStateToProps = currentState => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	onUpvotePost: postId => {
-		dispatch(upvotePost(postId));
-	},
-	onSubmitNewPost: postDataToSubmit => {
-		dispatch(createPost(postDataToSubmit));
-	},
-	deletePost: postId => {
-		dispatch(deletePost(postId));
-	},
+	onUpvotePost: postId => dispatch(upvotePost(postId)),
+	onSubmitNewPost: postDataToSubmit => dispatch(createPost(postDataToSubmit)),
+	deletePost: postId => dispatch(deletePost(postId)),
+	editPost: postDataToSubmit => dispatch(editPost(postDataToSubmit)),
 });
 
 App.propTypes = {
