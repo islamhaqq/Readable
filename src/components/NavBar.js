@@ -13,10 +13,6 @@ const NavBar = () => (
 							<a>Fiction</a>
 							<Link to="/submit">Submit</Link>
 						</td>
-						<td className="navigation-bar-profile-actions">
-							<a>Syed Aman</a>
-							<a>logout</a>
-						</td>
 					</tr>
 				</tbody>
 			</table>
