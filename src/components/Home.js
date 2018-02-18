@@ -6,6 +6,7 @@ import NavBar from '../components/NavBar';
 import TableSpacerRow from '../components/TableSpacerRow';
 import PostsBoard from '../components/PostsBoard';
 import PostDetail from '../components/PostDetail';
+import NotFound from '../components/NotFound';
 
 const Home = ({
 	posts,
@@ -37,6 +38,8 @@ const Home = ({
 					render={props => {
 						const { postId } = props.match.params;
 						const post = posts[postId];
+
+						if (!post) return <NotFound />;
 
 						return (
 							<PostDetail
