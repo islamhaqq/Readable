@@ -18,6 +18,7 @@ class App extends Component {
 					render={props => (
 						<Home
 							posts={this.props.posts}
+							allComments={this.props.allComments}
 							onUpvotePost={this.props.onUpvotePost}
 							{...props}
 						/>
@@ -62,6 +63,7 @@ class App extends Component {
 
 const mapStateToProps = currentState => ({
 	posts: currentState.posts.byId,
+	allComments: currentState.comments.byId,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -73,6 +75,7 @@ const mapDispatchToProps = dispatch => ({
 
 App.propTypes = {
 	posts: PropTypes.object.isRequired,
+	allComments: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

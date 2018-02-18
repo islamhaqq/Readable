@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import postPropType from '../utils/proptypes/postPropType';
 import Post from './Post';
 
-const PostDetail = ({ post, onUpvotePost }) => (
+const PostDetail = ({ post, comments, onUpvotePost }) => (
 	<tr className="post-detail-container">
 		<td>
 			<table>
@@ -22,9 +22,11 @@ const PostDetail = ({ post, onUpvotePost }) => (
 							<div className="comment-section">
 								<h2 className="comment-section-header">Comments</h2>
 								<ul className="comment-section-comment-list">
-									<li className="comment">
-										<h6 className="comment-author">Comment Author</h6>
-									</li>
+									{comments.map(({ id, author, body, points, timestamp }) => (
+										<li key={id} className="comment">
+											<h6 className="comment-author">{author}</h6>
+										</li>
+									))}
 								</ul>
 							</div>
 						</td>
@@ -38,6 +40,7 @@ const PostDetail = ({ post, onUpvotePost }) => (
 Post.propTypes = {
 	post: postPropType,
 	onUpvote: PropTypes.func.isRequired,
+	comments: PropTypes.array.isRequired,
 };
 
 export default PostDetail;

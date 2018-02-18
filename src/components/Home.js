@@ -7,7 +7,7 @@ import TableSpacerRow from '../components/TableSpacerRow';
 import PostsBoard from '../components/PostsBoard';
 import PostDetail from '../components/PostDetail';
 
-const Home = ({ posts, onUpvotePost, match }) => (
+const Home = ({ posts, allComments, onUpvotePost, match }) => (
 	<div>
 		<table className="readable">
 			<tbody className="readable-content">
@@ -28,12 +28,20 @@ const Home = ({ posts, onUpvotePost, match }) => (
 
 				<Route
 					path="/post/:postId"
-					render={props => (
-						<PostDetail
-							post={posts[props.match.params.postId]}
-							onUpvotePost={onUpvotePost}
-						/>
-					)}
+					render={props => {
+						const { postId } = props.match.params;
+						const post = posts[postId];
+
+						return (
+							<PostDetail
+								post={post}
+								comments={post.comments.map(
+									commentId => allComments[commentId],
+								)}
+								onUpvotePost={onUpvotePost}
+							/>
+						);
+					}}
 				/>
 			</tbody>
 		</table>
@@ -42,6 +50,7 @@ const Home = ({ posts, onUpvotePost, match }) => (
 
 Home.propTypes = {
 	posts: PropTypes.object.isRequired,
+	allComments: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 };
 
