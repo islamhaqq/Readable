@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
+import moment from 'moment';
 
 import postPropType from '../utils/proptypes/postPropType';
 import Post from './Post';
@@ -67,7 +68,12 @@ const PostDetail = ({ post, comments, onUpvotePost, onAddCommentToPost }) => (
 								<ul className="comment-section-comment-list">
 									{comments.map(({ id, author, body, points, timestamp }) => (
 										<li key={id} className="comment">
-											<h6 className="comment-author">{author}</h6>
+											<h6 className="comment-author">{`${author} ${moment(
+												timestamp,
+											)
+												.startOf('second')
+												.fromNow()}`}</h6>
+											<p className="comment-author">{body}</p>
 										</li>
 									))}
 								</ul>
