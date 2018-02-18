@@ -45,7 +45,16 @@ const PostDetail = ({ post, comments, onUpvotePost, onAddCommentToPost }) => (
 											id: uniqid(),
 										};
 
-										onAddCommentToPost(commentData);
+										if (
+											commentData.author &&
+											commentData.body &&
+											commentData.postId &&
+											commentData.id
+										) {
+											onAddCommentToPost(commentData);
+											this.htmlElementForCommentAuthorInput.value = '';
+											this.htmlElementForCommentBodyInput.value = '';
+										}
 									}}
 									type="submit"
 								>
