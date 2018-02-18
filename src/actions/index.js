@@ -31,12 +31,11 @@ export const deletePost = id => ({
 	},
 });
 
-export const editPost = ({ id, title, author, body }) => ({
+export const editPost = ({ id, title, body }) => ({
 	type: actionTypes.EDIT_POST_ACTION_TYPE,
 	payload: {
 		id,
 		title,
-		author,
 		body,
 	},
 });
