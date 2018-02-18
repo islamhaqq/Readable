@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 
 import NavBar from '../components/NavBar';
 import TableSpacerRow from '../components/TableSpacerRow';
-import Post from '../components/Post';
+import PostsBoard from '../components/PostsBoard';
+import PostDetail from '../components/PostDetail';
 
-const Home = ({ posts, onUpvotePost }) => (
+const Home = ({ posts, onUpvotePost, match }) => (
 	<div>
 		<table className="readable">
 			<tbody className="readable-content">
@@ -13,27 +15,33 @@ const Home = ({ posts, onUpvotePost }) => (
 
 				<TableSpacerRow height="10px" />
 
-				<tr className="home-container">
-					<td>
-						<table className="home-content">
-							{posts.map((post, index) => (
-								<Post
-									post={post}
-									onUpvote={onUpvotePost}
-									rank={index + 1}
-									key={index}
-								/>
-							))}
-						</table>
-					</td>
-				</tr>
+				<Route
+					path="/"
+					exact
+					render={() => (
+						<PostsBoard
+							posts={Object.keys(posts).map(key => posts[key])}
+							onUpvotePost={onUpvotePost}
+						/>
+					)}
+				/>
+
+				<Route
+					path="/post/:postId"
+					render={props => (
+						<PostDetail
+							post={posts[props.match.params.postId]}
+							onUpvotePost={onUpvotePost}
+						/>
+					)}
+				/>
 			</tbody>
 		</table>
 	</div>
 );
 
 Home.propTypes = {
-	posts: PropTypes.array.isRequired,
+	posts: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 };
 

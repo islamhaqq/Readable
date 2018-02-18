@@ -14,13 +14,11 @@ class App extends Component {
 			<div>
 				<Route
 					path="/"
-					exact
-					render={() => (
+					render={props => (
 						<Home
-							posts={Object.keys(this.props.posts).map(
-								key => this.props.posts[key],
-							)}
+							posts={this.props.posts}
 							onUpvotePost={this.props.onUpvotePost}
+							{...props}
 						/>
 					)}
 				/>

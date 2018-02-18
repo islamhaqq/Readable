@@ -1,38 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
+import postPropType from '../utils/proptypes/postPropType';
 import Post from './Post';
 
-class PostDetail extends Component {
-	render() {
-		return (
-			<tr class="post-detail-container">
-				<Post />
-				<p class="post-body">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia
-					libero a est rhoncus, ac scelerisque arcu euismod. Suspendisse
-					potenti. Morbi et cursus enim, at ullamcorper lacus. Suspendisse eu
-					eleifend mauris, at varius sem. Fusce nunc eros, ullamcorper sed diam
-					non, vulputate cursus ex. Etiam ullamcorper enim urna, at ullamcorper
-					sapien dapibus vel. Ut interdum libero vitae rutrum tempus. Aliquam
-					eleifend urna elit, quis mattis diam ornare ut. Integer hendrerit
-					aliquet quam eu efficitur. Donec ac felis nibh. Curabitur nec lorem
-					sit amet nibh dapibus pulvinar sed eu tellus. Donec lacinia
-					consectetur ultricies. Aenean blandit, tellus auctor fringilla
-					viverra, magna tellus cursus lectus, in volutpat odio est laoreet
-					augue.
-				</p>
-				<span post-vote-score>1</span>
-				<div class="comment-section">
-					<h2 class="comment-section-header">Comments</h2>
-					<ul class="comment-section-comment-list">
-						<li class="comment">
-							<h6 class="comment-author">Comment Author</h6>
-						</li>
-					</ul>
-				</div>
-			</tr>
-		);
-	}
-}
+const PostDetail = ({ post, onUpvotePost }) => (
+	<tr className="post-detail-container">
+		<td>
+			<table>
+				<Post post={post} rank={1} onUpvote={onUpvotePost} />
+
+				<tbody>
+					<tr>
+						<td>
+							<p className="post-body">{post.body}</p>
+							<span className="post-vote-score">{post.points}</span>
+							<div className="comment-section">
+								<h2 className="comment-section-header">Comments</h2>
+								<ul className="comment-section-comment-list">
+									<li className="comment">
+										<h6 className="comment-author">Comment Author</h6>
+									</li>
+								</ul>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+);
+
+Post.propTypes = {
+	post: postPropType,
+	rank: PropTypes.number.isRequired,
+	onUpvote: PropTypes.func.isRequired,
+};
 
 export default PostDetail;
