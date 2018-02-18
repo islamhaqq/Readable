@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 
 import PostRank from './PostRank';
 import PostUpvote from './PostUpvote';
+import PostDownvote from './PostDownvote';
 import postPropType from '../utils/proptypes/postPropType';
 
 const PostPrimaryRow = ({
 	post,
 	rank,
 	onUpvote,
+	onDownvote,
 	isRankDisplayed = false,
 	isVoteButtonDisplayed = false,
 }) => (
@@ -17,7 +19,10 @@ const PostPrimaryRow = ({
 		{isRankDisplayed ? <PostRank rank={rank} /> : null}
 
 		{isVoteButtonDisplayed ? (
-			<PostUpvote post={post} onUpvote={onUpvote} />
+			<td className="post-vote-container">
+				<PostUpvote post={post} onUpvote={onUpvote} />
+				<PostDownvote post={post} onDownvote={onDownvote} />
+			</td>
 		) : null}
 
 		<td className="post-title">
@@ -30,6 +35,7 @@ PostPrimaryRow.propTypes = {
 	post: postPropType.isRequired,
 	rank: PropTypes.number,
 	onUpvote: PropTypes.func,
+	onDownvote: PropTypes.func,
 	isRankDisplayed: PropTypes.bool.isRequired,
 	isVoteButtonDisplayed: PropTypes.bool.isRequired,
 };

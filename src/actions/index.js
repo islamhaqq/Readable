@@ -2,13 +2,6 @@ import uniqid from 'uniqid';
 
 import * as actionTypes from './actionTypes';
 
-export const upvotePost = postId => ({
-	type: actionTypes.UPVOTE_POST_ACTION_TYPE,
-	payload: {
-		postId,
-	},
-});
-
 export const createPost = ({ title, author, body }) => ({
 	type: actionTypes.CREATE_POST_ACTION_TYPE,
 	payload: {
@@ -35,6 +28,20 @@ export const deletePost = id => ({
 	type: actionTypes.DELETE_POST_ACTION_TYPE,
 	payload: {
 		id,
+	},
+});
+
+export const upvotePost = postId => ({
+	type: actionTypes.UPVOTE_POST_ACTION_TYPE,
+	payload: {
+		postId,
+	},
+});
+
+export const downvotePost = postId => ({
+	type: actionTypes.DOWNVOTE_POST_ACTION_TYPE,
+	payload: {
+		postId,
 	},
 });
 

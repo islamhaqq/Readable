@@ -6,13 +6,20 @@ import moment from 'moment';
 import postPropType from '../utils/proptypes/postPropType';
 import Post from './Post';
 
-const PostDetail = ({ post, comments, onUpvotePost, onAddCommentToPost }) => (
+const PostDetail = ({
+	post,
+	comments,
+	onUpvotePost,
+	onDownvotePost,
+	onAddCommentToPost,
+}) => (
 	<tr className="post-detail-container">
 		<td>
 			<table>
 				<Post
 					post={post}
 					onUpvote={onUpvotePost}
+					onDownvote={onDownvotePost}
 					isRankDisplayed={false}
 					isVoteButtonDisplayed={true}
 				/>
@@ -89,6 +96,7 @@ const PostDetail = ({ post, comments, onUpvotePost, onAddCommentToPost }) => (
 Post.propTypes = {
 	post: postPropType,
 	onUpvote: PropTypes.func.isRequired,
+	onDownvote: PropTypes.func.isRequired,
 	comments: PropTypes.array.isRequired,
 	onAddCommentToPost: PropTypes.func.isRequired,
 };

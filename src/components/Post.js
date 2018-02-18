@@ -10,12 +10,14 @@ const Post = ({
 	post,
 	rank,
 	onUpvote,
+	onDownvote,
 	isRankDisplayed = false,
 	isVoteButtonDisplayed = false,
 }) => {
 	const postPrimaryRowProps = {
 		post,
 		onUpvote,
+		onDownvote,
 		rank,
 		isRankDisplayed,
 		isVoteButtonDisplayed,
@@ -36,6 +38,7 @@ Post.propTypes = {
 	post: postPropType.isRequired,
 	rank: PropTypes.number,
 	onUpvote: PropTypes.func,
+	onDownvote: PropTypes.func,
 	isRankDisplayed: PropTypes.bool.isRequired,
 	isVoteButtonDisplayed: PropTypes.bool.isRequired,
 };

@@ -12,6 +12,7 @@ const Home = ({
 	posts,
 	allComments,
 	onUpvotePost,
+	onDownvotePost,
 	onAddCommentToPost,
 	match,
 }) => (
@@ -29,6 +30,7 @@ const Home = ({
 						<PostsBoard
 							posts={Object.keys(posts).map(key => posts[key])}
 							onUpvotePost={onUpvotePost}
+							onDownvotePost={onDownvotePost}
 						/>
 					)}
 				/>
@@ -48,6 +50,7 @@ const Home = ({
 									commentId => allComments[commentId],
 								)}
 								onUpvotePost={onUpvotePost}
+								onDownvotePost={onDownvotePost}
 								onAddCommentToPost={onAddCommentToPost}
 							/>
 						);
@@ -62,6 +65,7 @@ Home.propTypes = {
 	posts: PropTypes.object.isRequired,
 	allComments: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
+	onDownvotePost: PropTypes.func.isRequired,
 	onAddCommentToPost: PropTypes.func.isRequired,
 };
 
