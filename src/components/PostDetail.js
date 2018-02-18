@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import uniqid from 'uniqid';
 
 import postPropType from '../utils/proptypes/postPropType';
 import Post from './Post';
 
-const PostDetail = ({ post, comments, onUpvotePost }) => (
+const PostDetail = ({ post, comments, onUpvotePost, onAddCommentToPost }) => (
 	<tr className="post-detail-container">
 		<td>
 			<table>
@@ -19,6 +20,39 @@ const PostDetail = ({ post, comments, onUpvotePost }) => (
 					<tr>
 						<td>
 							<p className="post-body">{post.body}</p>
+
+							<div>
+								<textarea
+									ref={htmlElement =>
+										(this.htmlElementForCommentBodyInput = htmlElement)
+									}
+									rows="4"
+									cols="50"
+									placeholder="comment body..."
+								/>
+								<input
+									ref={htmlElement =>
+										(this.htmlElementForCommentAuthorInput = htmlElement)
+									}
+									placeholder="comment author..."
+								/>
+								<button
+									onClick={() => {
+										const commentData = {
+											author: this.htmlElementForCommentAuthorInput.value,
+											body: this.htmlElementForCommentBodyInput.value,
+											postId: post.id,
+											id: uniqid(),
+										};
+
+										onAddCommentToPost(commentData);
+									}}
+									type="submit"
+								>
+									add comment
+								</button>
+							</div>
+
 							<div className="comment-section">
 								<h2 className="comment-section-header">Comments</h2>
 								<ul className="comment-section-comment-list">
@@ -41,6 +75,7 @@ Post.propTypes = {
 	post: postPropType,
 	onUpvote: PropTypes.func.isRequired,
 	comments: PropTypes.array.isRequired,
+	onAddCommentToPost: PropTypes.func.isRequired,
 };
 
 export default PostDetail;

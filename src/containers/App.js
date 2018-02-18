@@ -7,7 +7,7 @@ import Home from '../components/Home';
 import ConfirmDelete from '../components/ConfirmDelete';
 import EditPost from '../components/EditPost';
 import Submit from '../components/Submit';
-import { upvotePost, createPost, deletePost, editPost } from '../actions';
+import * as actionCreators from '../actions';
 
 class App extends Component {
 	render() {
@@ -20,6 +20,7 @@ class App extends Component {
 							posts={this.props.posts}
 							allComments={this.props.allComments}
 							onUpvotePost={this.props.upvotePost}
+							onAddCommentToPost={this.props.addComment}
 							{...props}
 						/>
 					)}
@@ -67,15 +68,19 @@ const mapStateToProps = currentState => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	upvotePost: postId => dispatch(upvotePost(postId)),
-	onSubmitNewPost: postDataToSubmit => dispatch(createPost(postDataToSubmit)),
-	deletePost: postId => dispatch(deletePost(postId)),
-	editPost: postDataToSubmit => dispatch(editPost(postDataToSubmit)),
+	upvotePost: postId => dispatch(actionCreators.upvotePost(postId)),
+	onSubmitNewPost: postDataToSubmit =>
+		dispatch(actionCreators.createPost(postDataToSubmit)),
+	deletePost: postId => dispatch(actionCreators.deletePost(postId)),
+	editPost: postDataToSubmit =>
+		dispatch(actionCreators.editPost(postDataToSubmit)),
+	addComment: commentData => dispatch(actionCreators.addComment(commentData)),
 });
 
 App.propTypes = {
 	posts: PropTypes.object.isRequired,
 	allComments: PropTypes.object.isRequired,
+	addComment: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

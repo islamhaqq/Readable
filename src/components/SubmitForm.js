@@ -19,6 +19,9 @@ const SubmitForm = ({ onSubmitNewPost, history }) => (
 			<label>Body</label>
 			<textarea
 				ref={htmlElement => (this.htmlElementForBodyInput = htmlElement)}
+				placeholder="post body"
+				rows="4"
+				cols="50"
 			/>
 
 			<button

@@ -57,6 +57,20 @@ export function posts(previousState = initialState.posts, action) {
 				allIds: [...postIdsRemaining],
 			};
 
+		case actionTypes.ADD_COMMENT_ACTION_TYPE:
+			const { postId, id } = action.payload;
+
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					[postId]: {
+						...previousState.byId[postId],
+						comments: [...previousState.byId[postId].comments, id],
+					},
+				},
+			};
+
 		default:
 			return previousState;
 	}

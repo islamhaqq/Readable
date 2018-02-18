@@ -40,11 +40,11 @@ export const deletePost = id => ({
 	},
 });
 
-export const addComment = ({ title, author, body }) => ({
+export const addComment = ({ id, postId, author, body }) => ({
 	type: actionTypes.ADD_COMMENT_ACTION_TYPE,
 	payload: {
-		id: uniqid(),
-		title,
+		id,
+		postId,
 		author,
 		body,
 		points: 1,

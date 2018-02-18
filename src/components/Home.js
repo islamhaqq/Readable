@@ -7,7 +7,13 @@ import TableSpacerRow from '../components/TableSpacerRow';
 import PostsBoard from '../components/PostsBoard';
 import PostDetail from '../components/PostDetail';
 
-const Home = ({ posts, allComments, onUpvotePost, match }) => (
+const Home = ({
+	posts,
+	allComments,
+	onUpvotePost,
+	onAddCommentToPost,
+	match,
+}) => (
 	<div>
 		<table className="readable">
 			<tbody className="readable-content">
@@ -39,6 +45,7 @@ const Home = ({ posts, allComments, onUpvotePost, match }) => (
 									commentId => allComments[commentId],
 								)}
 								onUpvotePost={onUpvotePost}
+								onAddCommentToPost={onAddCommentToPost}
 							/>
 						);
 					}}
@@ -52,6 +59,7 @@ Home.propTypes = {
 	posts: PropTypes.object.isRequired,
 	allComments: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
+	onAddCommentToPost: PropTypes.func.isRequired,
 };
 
 export default Home;
