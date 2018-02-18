@@ -3,40 +3,14 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import PostDetailsRow from './PostDetailsRow';
+import PostNavBar from './PostNavBar';
 import postPropType from '../utils/proptypes/postPropType';
 
 const ConfirmDelete = ({ post, onDeletePost, match, history }) => (
 	<center>
 		<table>
 			<tbody>
-				<tr>
-					<td bgcolor="#ff6600">
-						<table
-							border="0"
-							cellPadding="0"
-							cellSpacing="0"
-							width="100%"
-							style={{ padding: '2px' }}
-						>
-							<tbody>
-								<tr>
-									<td>
-										<Link to="/">
-											<b>Home</b>
-										</Link>
-									</td>
-								</tr>
-								<tr>
-									<td style={{ lineHeight: '12pt', height: '10px' }}>
-										<span>
-											<b>Confirm</b>
-										</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
+				<PostNavBar title="Confirm" />
 
 				<tr>
 					<td>
