@@ -98,6 +98,8 @@ const mapDispatchToProps = dispatch => ({
 		dispatch(actionCreators.downvoteComment(commentId)),
 	deleteComment: commentToDelete =>
 		dispatch(actionCreators.deleteComment(commentToDelete)),
+	editComment: commentToEdit =>
+		dispatch(actionCreators.editComment(commentToEdit)),
 });
 
 App.propTypes = {
@@ -108,6 +110,7 @@ App.propTypes = {
 	downvotePost: PropTypes.func.isRequired,
 	upvoteComment: PropTypes.func.isRequired,
 	downvoteComment: PropTypes.func.isRequired,
+	editComment: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
