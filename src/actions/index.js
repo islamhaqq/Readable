@@ -24,17 +24,47 @@ export const fetchAllPosts = () => {
 	};
 };
 
-export const createPost = ({ title, author, body }) => ({
+export const createPost = ({ title, author, body }) => {
+	return async dispatch => {
+		const requestBody = {
+			id: uniqid(),
+			title,
+			author,
+			body,
+			timestamp: Date.now(),
+			category: 'react',
+		};
+
+		const response = await fetch(`${apiUrl}/posts`, {
+			method: 'post',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const json = await response.json();
+		return dispatch(addPost(json));
+	};
+};
+
+const addPost = ({
+	id,
+	voteScore,
+	deleted,
+	timestamp,
+	commentCount,
+	title,
+	author,
+	body,
+}) => ({
 	type: actionTypes.CREATE_POST_ACTION_TYPE,
 	payload: {
-		id: uniqid(),
+		id,
 		title,
 		author,
 		body,
-		voteScore: 1,
-		deleted: false,
-		timestamp: Date.now(),
-		commentCount: 0,
+		voteScore,
+		deleted,
+		timestamp,
+		commentCount,
 	},
 });
 
