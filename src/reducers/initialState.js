@@ -17,7 +17,7 @@ const initialState = {
 				body: 'rasta man...',
 				points: 25,
 				timestamp: Date.now(),
-				comments: ['comment2'],
+				comments: ['comment3'],
 			},
 		},
 		allIds: ['post1', 'post2'],
@@ -38,8 +38,15 @@ const initialState = {
 				points: 61,
 				timestamp: Date.now(),
 			},
+			comment3: {
+				author: 'asdads',
+				id: 'comment3',
+				body: 'this is my another comment body...',
+				points: 61,
+				timestamp: Date.now(),
+			},
 		},
-		allIds: ['comment1', 'comment2'],
+		allIds: ['comment1', 'comment2', 'comment3'],
 	},
 };
 
