@@ -3,6 +3,25 @@ import initialState from './initialState';
 
 export function posts(previousState = initialState.posts, action) {
 	switch (action.type) {
+		case actionTypes.RECEIVE_ALL_POSTS_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+				},
+				something: {
+					...action.payload.posts.reduce(
+						(posts, post) => ({
+							...posts,
+							[post.id]: {
+								...post,
+							},
+						}),
+						{},
+					),
+				},
+			};
+
 		case actionTypes.CREATE_POST_ACTION_TYPE:
 			return {
 				...previousState,
