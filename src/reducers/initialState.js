@@ -47,6 +47,7 @@ const initialState = {
 				id: 'comment3',
 				body: 'this is my another comment body...',
 				points: 61,
+				isDeleted: false,
 				timestamp: Date.now(),
 			},
 		},
