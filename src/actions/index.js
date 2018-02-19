@@ -95,14 +95,46 @@ export const removePost = id => ({
 	},
 });
 
-export const upvotePost = postId => ({
+export const upvotePost = postId => {
+	return async dispatch => {
+		const requestBody = {
+			option: 'upVote',
+		};
+
+		const response = await fetch(`${apiUrl}/posts/${postId}`, {
+			method: 'post',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const { id } = await response.json();
+		return dispatch(createUpvotePostAction(id));
+	};
+};
+
+export const createUpvotePostAction = postId => ({
 	type: actionTypes.UPVOTE_POST_ACTION_TYPE,
 	payload: {
 		postId,
 	},
 });
 
-export const downvotePost = postId => ({
+export const downvotePost = postId => {
+	return async dispatch => {
+		const requestBody = {
+			option: 'downVote',
+		};
+
+		const response = await fetch(`${apiUrl}/posts/${postId}`, {
+			method: 'post',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const { id } = await response.json();
+		return dispatch(createDownvotePostAction(id));
+	};
+};
+
+export const createDownvotePostAction = postId => ({
 	type: actionTypes.DOWNVOTE_POST_ACTION_TYPE,
 	payload: {
 		postId,
