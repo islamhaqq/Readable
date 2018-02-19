@@ -69,6 +69,29 @@ export const downvotePost = postId => ({
 	},
 });
 
+const requestCommentsForPost = () => ({
+	type: actionTypes.REQUEST_COMMENTS_FOR_POST_ACTION_TYPE,
+});
+
+const receiveCommentsForPost = json => ({
+	type: actionTypes.RECEIVE_COMMENTS_FOR_POST_ACTION_TYPE,
+	payload: {
+		comments: json,
+	},
+});
+
+export const fetchCommentsForPost = postId => {
+	return async dispatch => {
+		dispatch(requestCommentsForPost());
+		const response = await fetch(
+			`${apiUrl}/posts/${postId}/comments`,
+			authorizationHeaders,
+		);
+		const json = await response.json();
+		return dispatch(receiveCommentsForPost(json));
+	};
+};
+
 export const addComment = ({ id, parentId, author, body }) => ({
 	type: actionTypes.ADD_COMMENT_ACTION_TYPE,
 	payload: {
