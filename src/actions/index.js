@@ -68,7 +68,24 @@ const addPost = ({
 	},
 });
 
-export const editPost = ({ id, title, body }) => ({
+export const editPost = ({ id, title, body }) => {
+	return async dispatch => {
+		const requestBody = {
+			title,
+			body,
+		};
+
+		const response = await fetch(`${apiUrl}/posts/${id}`, {
+			method: 'put',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const json = await response.json();
+		return dispatch(createEditPostAction(json));
+	};
+};
+
+export const createEditPostAction = ({ id, title, body }) => ({
 	type: actionTypes.EDIT_POST_ACTION_TYPE,
 	payload: {
 		id,
