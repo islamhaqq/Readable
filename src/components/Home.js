@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
 import NavBar from '../components/NavBar';
-import TableSpacerRow from '../components/TableSpacerRow';
-import PostsBoard from '../components/PostsBoard';
-import PostDetail from '../components/PostDetail';
+import TableSpacerRow from './TableSpacerRow';
+import PostsBoard from './PostsBoard';
+import PostDetail from '../containers/PostDetail';
 import NotFound from '../components/NotFound';
 
 const Home = ({

@@ -4,9 +4,9 @@ import uniqid from 'uniqid';
 import moment from 'moment';
 
 import postPropType from '../utils/proptypes/postPropType';
-import Post from './Post';
-import UpvoteButton from './UpvoteButton';
-import DownvoteButton from './DownvoteButton';
+import Post from '../components/Post';
+import UpvoteButton from '../components/UpvoteButton';
+import DownvoteButton from '../components/DownvoteButton';
 
 class PostDetail extends Component {
 	constructor(props) {
