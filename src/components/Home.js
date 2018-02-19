@@ -17,6 +17,7 @@ const Home = ({
 	onDownvoteComment,
 	onAddCommentToPost,
 	onDeleteCommentFromPost,
+	onEditCommentOnPost,
 	match,
 }) => (
 	<div>
@@ -58,6 +59,7 @@ const Home = ({
 								onDownvoteComment={onDownvoteComment}
 								onAddCommentToPost={onAddCommentToPost}
 								onDeleteCommentFromPost={onDeleteCommentFromPost}
+								onEditCommentOnPost={onEditCommentOnPost}
 							/>
 						);
 					}}
@@ -76,6 +78,7 @@ Home.propTypes = {
 	onDownvoteComment: PropTypes.func.isRequired,
 	onAddCommentToPost: PropTypes.func.isRequired,
 	onDeleteCommentFromPost: PropTypes.func.isRequired,
+	onEditCommentOnPost: PropTypes.func.isRequired,
 };
 
 export default Home;

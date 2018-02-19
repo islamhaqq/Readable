@@ -26,6 +26,7 @@ class App extends Component {
 							onDownvoteComment={this.props.downvoteComment}
 							onAddCommentToPost={this.props.addComment}
 							onDeleteCommentFromPost={this.props.deleteComment}
+							onEditCommentOnPost={this.props.editComment}
 							{...props}
 						/>
 					)}

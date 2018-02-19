@@ -126,7 +126,11 @@ export function comments(previousState = initialState.comments, action) {
 			return {
 				...previousState,
 				byId: {
-					...previousState.byIds,
+					...previousState.byId,
+					[action.payload.id]: {
+						...previousState.byId[action.payload.id],
+						body: action.payload.body,
+					},
 				},
 			};
 

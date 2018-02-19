@@ -58,11 +58,10 @@ export const addComment = ({ id, postId, author, body }) => ({
 	},
 });
 
-export const editComment = ({ id, title, body }) => ({
+export const editComment = ({ id, body }) => ({
 	type: actionTypes.EDIT_COMMENT_ACTION_TYPE,
 	payload: {
 		id,
-		title,
 		body,
 	},
 });
