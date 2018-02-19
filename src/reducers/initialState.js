@@ -31,6 +31,7 @@ const initialState = {
 			comment1: {
 				author: 'tabtilachowdhury',
 				id: 'comment1',
+				parentId: 'post1',
 				body: 'this is my comment body...',
 				voteScore: 50,
 				deleted: false,
@@ -40,6 +41,7 @@ const initialState = {
 			comment2: {
 				author: 'asdads',
 				id: 'comment2',
+				parentId: 'post1',
 				body: 'this is my another comment body...',
 				voteScore: 61,
 				deleted: false,
@@ -49,6 +51,7 @@ const initialState = {
 			comment3: {
 				author: 'asdads',
 				id: 'comment3',
+				parentId: 'post2',
 				body: 'this is my another comment body...',
 				voteScore: 61,
 				deleted: false,
