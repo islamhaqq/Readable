@@ -41,11 +41,11 @@ export const createPost = ({ title, author, body }) => {
 			body: JSON.stringify(requestBody),
 		});
 		const json = await response.json();
-		return dispatch(addPost(json));
+		return dispatch(createCreatePostAction(json));
 	};
 };
 
-const addPost = ({
+const createCreatePostAction = ({
 	id,
 	voteScore,
 	deleted,
@@ -85,7 +85,7 @@ export const editPost = ({ id, title, body }) => {
 	};
 };
 
-export const createEditPostAction = ({ id, title, body }) => ({
+const createEditPostAction = ({ id, title, body }) => ({
 	type: actionTypes.EDIT_POST_ACTION_TYPE,
 	payload: {
 		id,
@@ -101,11 +101,11 @@ export const deletePost = postId => {
 			...authorizationHeaders,
 		});
 		const { id } = await response.json();
-		return dispatch(removePost(id));
+		return dispatch(createDeletePostAction(id));
 	};
 };
 
-export const removePost = id => ({
+const createDeletePostAction = id => ({
 	type: actionTypes.DELETE_POST_ACTION_TYPE,
 	payload: {
 		id,
