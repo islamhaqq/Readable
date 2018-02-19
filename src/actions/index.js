@@ -66,9 +66,10 @@ export const editComment = ({ id, title, body }) => ({
 	},
 });
 
-export const deleteComment = id => ({
+export const deleteComment = ({ id, postId }) => ({
 	type: actionTypes.DELETE_COMMENT_ACTION_TYPE,
 	payload: {
+		postId,
 		id,
 	},
 });

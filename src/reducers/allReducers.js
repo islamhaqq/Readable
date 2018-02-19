@@ -83,6 +83,20 @@ export function posts(previousState = initialState.posts, action) {
 				},
 			};
 
+		case actionTypes.DELETE_COMMENT_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					[action.payload.postId]: {
+						...previousState.byId[action.payload.postId],
+						comments: previousState.byId[action.payload.postId].comments.filter(
+							commentId => action.payload.id !== commentId,
+						),
+					},
+				},
+			};
+
 		default:
 			return previousState;
 	}
@@ -117,7 +131,25 @@ export function comments(previousState = initialState.comments, action) {
 			};
 
 		case actionTypes.DELETE_COMMENT_ACTION_TYPE:
-			return {};
+			const { allIds, byId } = previousState;
+
+			const commentIdsRemaining = allIds.filter(
+				postId => postId !== action.payload.id,
+			);
+
+			return {
+				...previousState,
+				byId: {
+					...commentIdsRemaining.reduce(
+						(commentsById, commentId) => ({
+							...commentsById,
+							[commentId]: byId[commentId],
+						}),
+						{},
+					),
+				},
+				allIds: [...commentIdsRemaining],
+			};
 
 		case actionTypes.UPVOTE_COMMENT_ACTION_TYPE:
 			return {
