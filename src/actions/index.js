@@ -77,7 +77,18 @@ export const editPost = ({ id, title, body }) => ({
 	},
 });
 
-export const deletePost = id => ({
+export const deletePost = postId => {
+	return async dispatch => {
+		const response = await fetch(`${apiUrl}/posts/${postId}`, {
+			method: 'delete',
+			...authorizationHeaders,
+		});
+		const { id } = await response.json();
+		return dispatch(removePost(id));
+	};
+};
+
+export const removePost = id => ({
 	type: actionTypes.DELETE_POST_ACTION_TYPE,
 	payload: {
 		id,
