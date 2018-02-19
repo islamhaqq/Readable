@@ -175,6 +175,25 @@ export function comments(previousState = initialState.comments, action) {
 				},
 			};
 
+		case actionTypes.DELETE_POST_ACTION_TYPE:
+			const remainingCommentIds = previousState.allIds.filter(
+				commentId => !action.payload.comments.includes(commentId),
+			);
+
+			return {
+				...previousState,
+				allIds: remainingCommentIds,
+				byId: {
+					...remainingCommentIds.reduce(
+						(commentsById, commentId) => ({
+							...commentsById,
+							[commentId]: previousState.byId[commentId],
+						}),
+						{},
+					),
+				},
+			};
+
 		default:
 			return previousState;
 	}
