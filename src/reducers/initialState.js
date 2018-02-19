@@ -7,6 +7,7 @@ const initialState = {
 				author: 'syedaman',
 				body: 'this is my post body...',
 				points: 198,
+				isDeleted: false,
 				timestamp: Date.now(),
 				comments: ['comment1', 'comment2'],
 			},
@@ -16,6 +17,7 @@ const initialState = {
 				author: 'jamaicanman',
 				body: 'rasta man...',
 				points: 25,
+				isDeleted: false,
 				timestamp: Date.now(),
 				comments: ['comment3'],
 			},
@@ -29,6 +31,7 @@ const initialState = {
 				id: 'comment1',
 				body: 'this is my comment body...',
 				points: 50,
+				isDeleted: false,
 				timestamp: Date.now(),
 			},
 			comment2: {
@@ -36,6 +39,7 @@ const initialState = {
 				id: 'comment2',
 				body: 'this is my another comment body...',
 				points: 61,
+				isDeleted: false,
 				timestamp: Date.now(),
 			},
 			comment3: {

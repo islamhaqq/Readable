@@ -10,6 +10,7 @@ export const createPost = ({ title, author, body }) => ({
 		author,
 		body,
 		points: 1,
+		isDeleted: false,
 		timestamp: Date.now(),
 		comments: [],
 	},
@@ -43,6 +44,7 @@ export const downvotePost = postId => ({
 	type: actionTypes.DOWNVOTE_POST_ACTION_TYPE,
 	payload: {
 		postId,
+		isDeleted: true,
 	},
 });
 
@@ -54,6 +56,7 @@ export const addComment = ({ id, postId, author, body }) => ({
 		author,
 		body,
 		points: 1,
+		isDeleted: false,
 		timestamp: Date.now(),
 	},
 });
