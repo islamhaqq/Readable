@@ -81,14 +81,14 @@ class PostDetail extends Component {
 												const commentData = {
 													author: this.htmlElementForCommentAuthorInput.value,
 													body: this.htmlElementForCommentBodyInput.value,
-													postId: post.id,
+													parentId: post.id,
 													id: uniqid(),
 												};
 
 												if (
 													commentData.author &&
 													commentData.body &&
-													commentData.postId &&
+													commentData.parentId &&
 													commentData.id
 												) {
 													onAddCommentToPost(commentData);
@@ -106,7 +106,13 @@ class PostDetail extends Component {
 										<h2 className="comment-section-header">Comments</h2>
 										<ul className="comment-section-comment-list">
 											{comments.map(comment => {
-												const { id, author, body, voteScore, timestamp } = comment;
+												const {
+													id,
+													author,
+													body,
+													voteScore,
+													timestamp,
+												} = comment;
 
 												return (
 													<li key={id} className="comment">

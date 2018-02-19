@@ -8,7 +8,7 @@ const postPropType = PropTypes.shape({
 	voteScore: PropTypes.number.isRequired,
 	deleted: PropTypes.bool.isRequired,
 	timestamp: PropTypes.number.isRequired,
-	comments: PropTypes.array.isRequired,
+	commentCount: PropTypes.number.isRequired,
 });
 
 export default postPropType;

@@ -50,9 +50,11 @@ const Home = ({
 						return (
 							<PostDetail
 								post={post}
-								comments={post.comments.map(
-									commentId => allComments[commentId],
-								)}
+								comments={Object.keys(allComments)
+									.filter(
+										commentId => allComments[commentId].parentId === post.id,
+									)
+									.map(commentId => allComments[commentId])}
 								onUpvotePost={onUpvotePost}
 								onDownvotePost={onDownvotePost}
 								onUpvoteComment={onUpvoteComment}

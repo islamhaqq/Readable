@@ -27,10 +27,7 @@ const ConfirmDelete = ({ post, onDeletePost, match, history }) => (
 										<h3>Do you want this to be deleted?</h3>
 										<button
 											onClick={() => {
-												onDeletePost({
-													id: match.params.postId,
-													comments: post.comments,
-												});
+												onDeletePost(match.params.postId);
 												history.push('/');
 											}}
 											type="submit"

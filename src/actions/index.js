@@ -34,7 +34,7 @@ export const createPost = ({ title, author, body }) => ({
 		voteScore: 1,
 		deleted: false,
 		timestamp: Date.now(),
-		comments: [],
+		commentCount: 0,
 	},
 });
 
@@ -47,11 +47,10 @@ export const editPost = ({ id, title, body }) => ({
 	},
 });
 
-export const deletePost = ({ id, comments }) => ({
+export const deletePost = id => ({
 	type: actionTypes.DELETE_POST_ACTION_TYPE,
 	payload: {
 		id,
-		comments,
 	},
 });
 
@@ -70,11 +69,11 @@ export const downvotePost = postId => ({
 	},
 });
 
-export const addComment = ({ id, postId, author, body }) => ({
+export const addComment = ({ id, parentId, author, body }) => ({
 	type: actionTypes.ADD_COMMENT_ACTION_TYPE,
 	payload: {
 		id,
-		postId,
+		parentId,
 		author,
 		body,
 		voteScore: 1,

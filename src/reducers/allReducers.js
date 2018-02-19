@@ -89,15 +89,16 @@ export function posts(previousState = initialState.posts, action) {
 			};
 
 		case actionTypes.ADD_COMMENT_ACTION_TYPE:
-			const { postId, id } = action.payload;
+			const { parentId, id } = action.payload;
 
 			return {
 				...previousState,
 				byId: {
 					...previousState.byId,
-					[postId]: {
-						...previousState.byId[postId],
-						comments: [...previousState.byId[postId].comments, id],
+					[parentId]: {
+						...previousState.byId[parentId],
+						commentCount:
+							previousState.byId[action.payload.parentId].commentCount + 1,
 					},
 				},
 			};
@@ -109,9 +110,8 @@ export function posts(previousState = initialState.posts, action) {
 					...previousState.byId,
 					[action.payload.postId]: {
 						...previousState.byId[action.payload.postId],
-						comments: previousState.byId[action.payload.postId].comments.filter(
-							commentId => action.payload.id !== commentId,
-						),
+						commentCount:
+							previousState.byId[action.payload.postId].commentCount - 1,
 					},
 				},
 			};
@@ -126,6 +126,7 @@ export function comments(previousState = initialState.comments, action) {
 		case actionTypes.ADD_COMMENT_ACTION_TYPE:
 			const {
 				id,
+				parentId,
 				author,
 				body,
 				voteScore,
@@ -139,6 +140,7 @@ export function comments(previousState = initialState.comments, action) {
 					...previousState.byId,
 					[id]: {
 						id,
+						parentId,
 						author,
 						body,
 						voteScore,
@@ -165,7 +167,7 @@ export function comments(previousState = initialState.comments, action) {
 			const { allIds, byId } = previousState;
 
 			const commentIdsRemaining = allIds.filter(
-				postId => postId !== action.payload.id,
+				commentId => commentId !== action.payload.id,
 			);
 
 			return {
@@ -210,7 +212,8 @@ export function comments(previousState = initialState.comments, action) {
 
 		case actionTypes.DELETE_POST_ACTION_TYPE:
 			const remainingCommentIds = previousState.allIds.filter(
-				commentId => !action.payload.comments.includes(commentId),
+				commentId =>
+					previousState.byId[commentId].parentId !== action.payload.id,
 			);
 
 			return {
@@ -218,8 +221,8 @@ export function comments(previousState = initialState.comments, action) {
 				allIds: remainingCommentIds,
 				byId: {
 					...remainingCommentIds.reduce(
-						(commentsById, commentId) => ({
-							...commentsById,
+						(remainingComments, commentId) => ({
+							...remainingComments,
 							[commentId]: previousState.byId[commentId],
 						}),
 						{},

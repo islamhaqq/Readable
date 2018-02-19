@@ -10,7 +10,7 @@ const initialState = {
 				voteScore: 198,
 				deleted: false,
 				timestamp: Date.now(),
-				comments: ['comment1', 'comment2'],
+				commentCount: 2,
 			},
 			post2: {
 				id: 'post2',
@@ -21,7 +21,7 @@ const initialState = {
 				voteScore: 25,
 				deleted: false,
 				timestamp: Date.now(),
-				comments: ['comment3'],
+				commentCount: 1,
 			},
 		},
 		allIds: ['post1', 'post2'],

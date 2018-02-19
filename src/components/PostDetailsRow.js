@@ -18,8 +18,8 @@ const PostDetailsRow = ({ post }) => (
 			</span>
 			|
 			<a className="post-details-view-comments-link">
-				{` ${post.comments.length} ${
-					post.comments.length === 1 ? 'comment' : 'comments'
+				{` ${post.commentCount} ${
+					post.commentCount === 1 ? 'comment' : 'comments'
 				}`}
 			</a>
 			|
