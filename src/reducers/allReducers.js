@@ -212,3 +212,20 @@ export function comments(previousState = initialState.comments, action) {
 			return previousState;
 	}
 }
+
+export function general(previousState = initialState.general, action) {
+	switch (action.type) {
+		case actionTypes.REQUEST_ALL_POSTS_ACTION_TYPE:
+			return {
+				...previousState,
+				isLoading: true,
+			};
+		case actionTypes.RECEIVE_ALL_POSTS_ACTION_TYPE:
+			return {
+				...previousState,
+				isLoading: false,
+			};
+		default:
+			return previousState;
+	}
+}

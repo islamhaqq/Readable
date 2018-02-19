@@ -19,8 +19,8 @@ export const fetchAllPosts = () => {
 	return async dispatch => {
 		dispatch(requestAllPosts());
 		const response = await fetch(`${apiUrl}/posts`, authorizationHeaders);
-		const json = response.json();
-		dispatch(receiveAllPosts(json));
+		const json = await response.json();
+		return dispatch(receiveAllPosts(json));
 	};
 };
 

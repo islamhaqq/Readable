@@ -11,6 +11,10 @@ import NotFound from '../components/NotFound';
 import * as actionCreators from '../actions';
 
 class App extends Component {
+	async componentDidMount() {
+		await this.props.fetchAllPosts();
+	}
+
 	render() {
 		return (
 			<div>
@@ -86,6 +90,7 @@ const mapStateToProps = currentState => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+	fetchAllPosts: () => dispatch(actionCreators.fetchAllPosts()),
 	onSubmitNewPost: postDataToSubmit =>
 		dispatch(actionCreators.createPost(postDataToSubmit)),
 	deletePost: postId => dispatch(actionCreators.deletePost(postId)),
