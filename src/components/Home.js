@@ -10,7 +10,6 @@ import NotFound from '../components/NotFound';
 
 const Home = ({
 	posts,
-	allComments,
 	onUpvotePost,
 	onDownvotePost,
 	onUpvoteComment,
@@ -50,11 +49,6 @@ const Home = ({
 						return (
 							<PostDetail
 								post={post}
-								comments={Object.keys(allComments)
-									.filter(
-										commentId => allComments[commentId].parentId === post.id,
-									)
-									.map(commentId => allComments[commentId])}
 								onUpvotePost={onUpvotePost}
 								onDownvotePost={onDownvotePost}
 								onUpvoteComment={onUpvoteComment}
@@ -73,7 +67,6 @@ const Home = ({
 
 Home.propTypes = {
 	posts: PropTypes.object.isRequired,
-	allComments: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 	onDownvotePost: PropTypes.func.isRequired,
 	onUpvoteComment: PropTypes.func.isRequired,

@@ -115,8 +115,14 @@ class PostDetail extends Component {
 									<div className="comment-section">
 										<h2 className="comment-section-header">Comments</h2>
 										<ul className="comment-section-comment-list">
-											{this.state.comments &&
-												this.state.comments.map(comment => {
+											{Object.keys(this.props.allComments)
+												.filter(
+													commentId =>
+														this.props.allComments[commentId].parentId ===
+														post.id,
+												)
+												.map(commentId => this.props.allComments[commentId])
+												.map(comment => {
 													const {
 														id,
 														author,
@@ -210,14 +216,18 @@ class PostDetail extends Component {
 	}
 }
 
-const mapStateToProps = currentState => ({});
+const mapStateToProps = currentState => ({
+	allComments: currentState.comments.byId,
+});
 
 const mapDispatchToProps = dispatch => ({
-	fetchComments: postId => dispatch(actionCreators.fetchCommentsForPost(postId)),
+	fetchComments: postId =>
+		dispatch(actionCreators.fetchCommentsForPost(postId)),
 });
 
 Post.propTypes = {
 	post: postPropType,
+	allComments: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 	onDownvotePost: PropTypes.func.isRequired,
 	onUpvoteComment: PropTypes.func.isRequired,
