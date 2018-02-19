@@ -16,6 +16,7 @@ const PostDetail = ({
 	onUpvoteComment,
 	onDownvoteComment,
 	onAddCommentToPost,
+	onDeleteCommentFromPost,
 }) => (
 	<tr className="post-detail-container">
 		<td>
@@ -86,6 +87,17 @@ const PostDetail = ({
 													{`${points} points by ${author} ${moment(timestamp)
 														.startOf('second')
 														.fromNow()}`}
+													<span
+														onClick={() => {
+															onDeleteCommentFromPost({
+																id,
+																postId: post.id,
+															});
+														}}
+														style={{ paddingLeft: '10px' }}
+													>
+														❌
+													</span>
 												</h6>
 
 												<p className="comment-author">{body}</p>
@@ -119,6 +131,7 @@ Post.propTypes = {
 	onDownvoteComment: PropTypes.func.isRequired,
 	comments: PropTypes.array.isRequired,
 	onAddCommentToPost: PropTypes.func.isRequired,
+	onDeleteCommentFromPost: PropTypes.func.isRequired,
 };
 
 export default PostDetail;

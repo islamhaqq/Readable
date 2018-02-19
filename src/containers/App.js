@@ -25,6 +25,7 @@ class App extends Component {
 							onUpvoteComment={this.props.upvoteComment}
 							onDownvoteComment={this.props.downvoteComment}
 							onAddCommentToPost={this.props.addComment}
+							onDeleteCommentFromPost={this.props.deleteComment}
 							{...props}
 						/>
 					)}
@@ -95,12 +96,15 @@ const mapDispatchToProps = dispatch => ({
 	upvoteComment: commentId => dispatch(actionCreators.upvoteComment(commentId)),
 	downvoteComment: commentId =>
 		dispatch(actionCreators.downvoteComment(commentId)),
+	deleteComment: commentToDelete =>
+		dispatch(actionCreators.deleteComment(commentToDelete)),
 });
 
 App.propTypes = {
 	posts: PropTypes.object.isRequired,
 	allComments: PropTypes.object.isRequired,
 	addComment: PropTypes.func.isRequired,
+	deleteComment: PropTypes.func.isRequired,
 	downvotePost: PropTypes.func.isRequired,
 	upvoteComment: PropTypes.func.isRequired,
 	downvoteComment: PropTypes.func.isRequired,
