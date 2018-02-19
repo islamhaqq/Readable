@@ -61,6 +61,9 @@ const initialState = {
 		},
 		allIds: ['comment1', 'comment2', 'comment3'],
 	},
+	general: {
+		isLoading: false,
+	},
 };
 
 export default initialState;
