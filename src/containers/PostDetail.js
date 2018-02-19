@@ -121,6 +121,7 @@ class PostDetail extends Component {
 																	try {
 																		await this.setState(previousState => ({
 																			isEditDialogShowing: !previousState.isEditDialogShowing,
+																			commentBeingEditted: id,
 																			updatedPostBody: body,
 																		}));
 																	} catch (error) {
@@ -144,7 +145,8 @@ class PostDetail extends Component {
 															</span>
 														</h6>
 
-														{this.state.isEditDialogShowing ? (
+														{this.state.isEditDialogShowing &&
+														this.state.commentBeingEditted === id ? (
 															<div>
 																<textarea
 																	onChange={this.handleUpdatedPostBodyChange}
