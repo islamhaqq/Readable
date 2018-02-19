@@ -34,6 +34,7 @@ const initialState = {
 				body: 'this is my comment body...',
 				voteScore: 50,
 				deleted: false,
+				parentDeleted: false,
 				timestamp: Date.now(),
 			},
 			comment2: {
@@ -42,6 +43,7 @@ const initialState = {
 				body: 'this is my another comment body...',
 				voteScore: 61,
 				deleted: false,
+				parentDeleted: false,
 				timestamp: Date.now(),
 			},
 			comment3: {
@@ -50,6 +52,7 @@ const initialState = {
 				body: 'this is my another comment body...',
 				voteScore: 61,
 				deleted: false,
+				parentDeleted: false,
 				timestamp: Date.now(),
 			},
 		},
