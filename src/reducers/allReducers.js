@@ -8,8 +8,6 @@ export function posts(previousState = initialState.posts, action) {
 				...previousState,
 				byId: {
 					...previousState.byId,
-				},
-				something: {
 					...action.payload.posts.reduce(
 						(posts, post) => ({
 							...posts,
