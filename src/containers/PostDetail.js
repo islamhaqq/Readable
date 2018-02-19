@@ -111,7 +111,7 @@ class PostDetail extends Component {
 												return (
 													<li key={id} className="comment">
 														<h6 className="comment-author">
-															{`${voteScore} voteScore by ${author} ${moment(
+															{`${voteScore} points by ${author} ${moment(
 																timestamp,
 															)
 																.startOf('second')
