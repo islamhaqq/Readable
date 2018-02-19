@@ -18,6 +18,12 @@ export function posts(previousState = initialState.posts, action) {
 						{},
 					),
 				},
+				allIds: [
+					...action.payload.posts.reduce(
+						(allIds, post) => [...allIds, post.id],
+						[],
+					),
+				],
 			};
 
 		case actionTypes.CREATE_POST_ACTION_TYPE:
