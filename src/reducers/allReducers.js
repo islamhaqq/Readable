@@ -52,7 +52,7 @@ export function posts(previousState = initialState.posts, action) {
 					...previousState.byId,
 					[action.payload.postId]: {
 						...previousState.byId[action.payload.postId],
-						points: previousState.byId[action.payload.postId].points + 1,
+						voteScore: previousState.byId[action.payload.postId].voteScore + 1,
 					},
 				},
 			};
@@ -64,7 +64,7 @@ export function posts(previousState = initialState.posts, action) {
 					...previousState.byId,
 					[action.payload.postId]: {
 						...previousState.byId[action.payload.postId],
-						points: previousState.byId[action.payload.postId].points - 1,
+						voteScore: previousState.byId[action.payload.postId].voteScore - 1,
 					},
 				},
 			};
@@ -105,7 +105,7 @@ export function posts(previousState = initialState.posts, action) {
 export function comments(previousState = initialState.comments, action) {
 	switch (action.type) {
 		case actionTypes.ADD_COMMENT_ACTION_TYPE:
-			const { id, author, body, points, isDeleted, timestamp } = action.payload;
+			const { id, author, body, voteScore, isDeleted, timestamp } = action.payload;
 
 			return {
 				...previousState,
@@ -115,7 +115,7 @@ export function comments(previousState = initialState.comments, action) {
 						id,
 						author,
 						body,
-						points,
+						voteScore,
 						isDeleted,
 						timestamp,
 					},
@@ -163,7 +163,7 @@ export function comments(previousState = initialState.comments, action) {
 					...previousState.byId,
 					[action.payload.commentId]: {
 						...previousState.byId[action.payload.commentId],
-						points: previousState.byId[action.payload.commentId].points + 1,
+						voteScore: previousState.byId[action.payload.commentId].voteScore + 1,
 					},
 				},
 			};
@@ -175,7 +175,7 @@ export function comments(previousState = initialState.comments, action) {
 					...previousState.byId,
 					[action.payload.commentId]: {
 						...previousState.byId[action.payload.commentId],
-						points: previousState.byId[action.payload.commentId].points - 1,
+						voteScore: previousState.byId[action.payload.commentId].voteScore - 1,
 					},
 				},
 			};

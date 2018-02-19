@@ -9,7 +9,7 @@ const PostDetailsRow = ({ post }) => (
 		<td colSpan="2" />
 
 		<td className="post-details-container">
-			<span className="post-points">{`${post.points} points by `}</span>
+			<span className="post-voteScore">{`${post.voteScore} voteScore by `}</span>
 			<a className="post-author">{post.author}</a>
 			<span className="post-timestamp">
 				{` ${moment(post.timestamp)

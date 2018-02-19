@@ -106,12 +106,12 @@ class PostDetail extends Component {
 										<h2 className="comment-section-header">Comments</h2>
 										<ul className="comment-section-comment-list">
 											{comments.map(comment => {
-												const { id, author, body, points, timestamp } = comment;
+												const { id, author, body, voteScore, timestamp } = comment;
 
 												return (
 													<li key={id} className="comment">
 														<h6 className="comment-author">
-															{`${points} points by ${author} ${moment(
+															{`${voteScore} voteScore by ${author} ${moment(
 																timestamp,
 															)
 																.startOf('second')
