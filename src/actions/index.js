@@ -1,6 +1,28 @@
 import uniqid from 'uniqid';
+import fetch from 'cross-fetch';
 
 import * as actionTypes from './actionTypes';
+import { apiUrl, authorizationHeaders } from '../utils/config';
+
+const requestAllPosts = () => ({
+	type: actionTypes.REQUEST_ALL_POSTS_ACTION_TYPE,
+});
+
+const receiveAllPosts = json => ({
+	type: actionTypes.RECEIVE_ALL_POSTS_ACTION_TYPE,
+	payload: {
+		posts: json,
+	},
+});
+
+export const fetchAllPosts = () => {
+	return async dispatch => {
+		dispatch(requestAllPosts());
+		const response = await fetch(`${apiUrl}/posts`, authorizationHeaders);
+		const json = response.json();
+		dispatch(receiveAllPosts(json));
+	};
+};
 
 export const createPost = ({ title, author, body }) => ({
 	type: actionTypes.CREATE_POST_ACTION_TYPE,
