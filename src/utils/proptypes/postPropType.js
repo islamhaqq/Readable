@@ -6,7 +6,7 @@ const postPropType = PropTypes.shape({
 	author: PropTypes.string.isRequired,
 	body: PropTypes.string.isRequired,
 	voteScore: PropTypes.number.isRequired,
-	isDeleted: PropTypes.bool.isRequired,
+	deleted: PropTypes.bool.isRequired,
 	timestamp: PropTypes.number.isRequired,
 	comments: PropTypes.array.isRequired,
 });
