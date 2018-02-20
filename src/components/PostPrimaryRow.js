@@ -26,7 +26,7 @@ const PostPrimaryRow = ({
 		) : null}
 
 		<td className="post-title">
-			<Link to={`/post/${post.id}`}>{post.title}</Link>
+			<Link to={`${post.category}/post/${post.id}`}>{post.title}</Link>
 		</td>
 	</tr>
 );

@@ -34,7 +34,7 @@ const Home = ({ posts, onUpvotePost, onDownvotePost, match, categories }) => (
 				/>
 
 				<Route
-					path="/post/:postId"
+					path="/:category/post/:postId"
 					render={props => {
 						const { postId } = props.match.params;
 						const post = posts[postId];
