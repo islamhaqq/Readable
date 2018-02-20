@@ -10,6 +10,7 @@ const initialState = {
 	general: {
 		isLoading: false,
 	},
+	categories: [],
 };
 
 export default initialState;
