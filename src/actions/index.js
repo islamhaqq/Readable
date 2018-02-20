@@ -243,14 +243,46 @@ export const createDeleteCommentAction = ({ id, parentId }) => ({
 	},
 });
 
-export const upvoteComment = commentId => ({
+export const upvoteComment = commentId => {
+	return async dispatch => {
+		const requestBody = {
+			option: 'upVote',
+		};
+
+		const response = await fetch(`${apiUrl}/comments/${commentId}`, {
+			method: 'post',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const { id } = await response.json();
+		return dispatch(createUpvoteCommentAction(id));
+	};
+};
+
+export const createUpvoteCommentAction = commentId => ({
 	type: actionTypes.UPVOTE_COMMENT_ACTION_TYPE,
 	payload: {
 		commentId,
 	},
 });
 
-export const downvoteComment = commentId => ({
+export const downvoteComment = commentId => {
+	return async dispatch => {
+		const requestBody = {
+			option: 'downVote',
+		};
+
+		const response = await fetch(`${apiUrl}/comments/${commentId}`, {
+			method: 'post',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const { id } = await response.json();
+		return dispatch(createDownvoteCommentAction(id));
+	};
+};
+
+export const createDownvoteCommentAction = commentId => ({
 	type: actionTypes.DOWNVOTE_COMMENT_ACTION_TYPE,
 	payload: {
 		commentId,
