@@ -20,28 +20,11 @@ const Home = ({ posts, onUpvotePost, onDownvotePost, match, categories }) => (
 				<TableSpacerRow height="10px" />
 
 				<Route
-					path="/"
-					exact
-					render={() => (
-						<PostsBoard
-							posts={Object.keys(posts).map(key => posts[key])}
-							onUpvotePost={onUpvotePost}
-							onDownvotePost={onDownvotePost}
-						/>
-					)}
-				/>
-
-				<Route
-					path="/:category"
-					exact
-					render={({ match }) => {
-						const { category } = match.params;
-
+					path={match.url}
+					render={() => {
 						return (
 							<PostsBoard
-								posts={Object.keys(posts)
-									.map(key => posts[key])
-									.filter(post => post.category === category)}
+								posts={Object.keys(posts).map(key => posts[key])}
 								onUpvotePost={onUpvotePost}
 								onDownvotePost={onDownvotePost}
 							/>
