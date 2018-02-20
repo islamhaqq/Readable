@@ -21,6 +21,7 @@ class App extends Component {
 			<div>
 				<Route
 					path="/"
+					exact
 					render={props => (
 						<Home
 							posts={this.props.posts}
