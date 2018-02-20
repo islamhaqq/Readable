@@ -233,11 +233,12 @@ export const editComment = ({ id, body }) => {
 	};
 };
 
-export const createEditCommentAction = ({ id, body }) => ({
+export const createEditCommentAction = ({ id, body, timestamp }) => ({
 	type: actionTypes.EDIT_COMMENT_ACTION_TYPE,
 	payload: {
 		id,
 		body,
+		timestamp,
 	},
 });
 

@@ -161,6 +161,7 @@ export function comments(previousState = initialState.comments, action) {
 					[action.payload.id]: {
 						...previousState.byId[action.payload.id],
 						body: action.payload.body,
+						timestamp: action.payload.timestamp,
 					},
 				},
 			};
