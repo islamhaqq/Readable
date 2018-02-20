@@ -12,7 +12,8 @@ const Submit = ({ onSubmitNewPost, history, match }) => {
 		<center>
 			<table>
 				<tbody>
-					<SubmitNavBar />
+					<SubmitNavBar category={category} />
+
 					<TableSpacerRow height="10" />
 
 					<SubmitForm

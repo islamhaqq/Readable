@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SubmitNavBar = () => (
+const SubmitNavBar = ({ category }) => (
 	<tr>
 		<td bgcolor="#ff6600">
 			<table
@@ -22,7 +22,7 @@ const SubmitNavBar = () => (
 					<tr>
 						<td style={{ lineHeight: '12pt', height: '10px' }}>
 							<span>
-								<b>Submit</b>
+								<b>{`Submit${category ? ` to ${category}` : ''}`}</b>
 							</span>
 						</td>
 					</tr>
