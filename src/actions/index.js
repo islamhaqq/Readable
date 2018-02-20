@@ -24,7 +24,7 @@ export const fetchAllPosts = () => {
 	};
 };
 
-export const createPost = ({ title, author, body }) => {
+export const createPost = ({ title, author, body, category }) => {
 	return async dispatch => {
 		const requestBody = {
 			id: uniqid(),
@@ -32,7 +32,7 @@ export const createPost = ({ title, author, body }) => {
 			author,
 			body,
 			timestamp: Date.now(),
-			category: 'react',
+			category,
 		};
 
 		const response = await fetch(`${apiUrl}/posts`, {
@@ -45,26 +45,10 @@ export const createPost = ({ title, author, body }) => {
 	};
 };
 
-const createCreatePostAction = ({
-	id,
-	voteScore,
-	deleted,
-	timestamp,
-	commentCount,
-	title,
-	author,
-	body,
-}) => ({
+const createCreatePostAction = newPostData => ({
 	type: actionTypes.CREATE_POST_ACTION_TYPE,
 	payload: {
-		id,
-		title,
-		author,
-		body,
-		voteScore,
-		deleted,
-		timestamp,
-		commentCount,
+		...newPostData,
 	},
 });
 
