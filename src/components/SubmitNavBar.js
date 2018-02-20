@@ -22,7 +22,7 @@ const SubmitNavBar = ({ category }) => (
 					<tr>
 						<td style={{ lineHeight: '12pt', height: '10px' }}>
 							<span>
-								<b>{`Submit${category ? ` to ${category}` : ''}`}</b>
+								<b>{`Submit to ${category}`}</b>
 							</span>
 						</td>
 					</tr>
