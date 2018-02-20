@@ -21,6 +21,7 @@ const Home = ({ posts, onUpvotePost, onDownvotePost, match, categories }) => (
 
 				<Route
 					path={match.url}
+					exact
 					render={() => {
 						return (
 							<PostsBoard

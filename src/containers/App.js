@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Home from '../components/Home';
 import ConfirmDelete from '../components/ConfirmDelete';
@@ -18,21 +18,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<Route
-					path="/"
-					exact
-					render={props => (
-						<Home
-							posts={this.props.posts}
-							categories={this.props.categories}
-							onUpvotePost={this.props.upvotePost}
-							onDownvotePost={this.props.downvotePost}
-							{...props}
-						/>
-					)}
-				/>
-
+			<Switch>
 				<Route
 					path="/:category"
 					exact
@@ -112,7 +98,20 @@ class App extends Component {
 					}}
 					exact
 				/>
-			</div>
+
+				<Route
+					path="/"
+					render={props => (
+						<Home
+							posts={this.props.posts}
+							categories={this.props.categories}
+							onUpvotePost={this.props.upvotePost}
+							onDownvotePost={this.props.downvotePost}
+							{...props}
+						/>
+					)}
+				/>
+			</Switch>
 		);
 	}
 }
