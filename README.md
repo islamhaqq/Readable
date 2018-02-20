@@ -4,9 +4,9 @@ A social media application made using React and Redux. Users can create and edit
 
 ## How to run
 
-### NPM
-
 * make sure to have the paired API running: <https://github.com/udacity/reactnd-project-readable-starter>
+
+### NPM
 
 ```sh
 $ npm install
