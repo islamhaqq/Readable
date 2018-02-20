@@ -306,3 +306,18 @@ export const createDownvoteCommentAction = commentId => ({
 		commentId,
 	},
 });
+
+export const fetchAllCategories = () => {
+	return async dispatch => {
+		const response = await fetch(`${apiUrl}/categories`, authorizationHeaders);
+		const { categories } = await response.json();
+		return dispatch(receiveAllCategories(categories));
+	};
+};
+
+const receiveAllCategories = categories => ({
+	type: actionTypes.RECEIVE_ALL_CATEGORIES_ACTION_TYPE,
+	payload: {
+		categories,
+	},
+});

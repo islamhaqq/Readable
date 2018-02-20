@@ -285,7 +285,7 @@ export function general(previousState = initialState.general, action) {
 
 export function categories(previousState = initialState.categories, action) {
 	switch (action.type) {
-		case actionTypes.REQUEST_ALL_CATEGORIES_ACTION_TYPE:
+		case actionTypes.RECEIVE_ALL_CATEGORIES_ACTION_TYPE:
 			return [...previousState, ...action.payload.categories];
 		default:
 			return previousState;

@@ -13,6 +13,7 @@ import * as actionCreators from '../actions';
 class App extends Component {
 	async componentDidMount() {
 		await this.props.fetchAllPosts();
+		await this.props.fetchAllCategories();
 	}
 
 	render() {
@@ -84,6 +85,7 @@ const mapStateToProps = currentState => ({
 
 const mapDispatchToProps = dispatch => ({
 	fetchAllPosts: () => dispatch(actionCreators.fetchAllPosts()),
+	fetchAllCategories: () => dispatch(actionCreators.fetchAllCategories()),
 	onSubmitNewPost: postDataToSubmit =>
 		dispatch(actionCreators.createPost(postDataToSubmit)),
 	deletePost: postId => dispatch(actionCreators.deletePost(postId)),
