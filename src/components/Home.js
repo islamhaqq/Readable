@@ -8,17 +8,7 @@ import PostsBoard from './PostsBoard';
 import PostDetail from '../containers/PostDetail';
 import NotFound from '../components/NotFound';
 
-const Home = ({
-	posts,
-	onUpvotePost,
-	onDownvotePost,
-	onUpvoteComment,
-	onDownvoteComment,
-	onAddCommentToPost,
-	onDeleteCommentFromPost,
-	onEditCommentOnPost,
-	match,
-}) => (
+const Home = ({ posts, onUpvotePost, onDownvotePost, match }) => (
 	<div>
 		<table className="readable">
 			<tbody className="readable-content">
@@ -51,11 +41,6 @@ const Home = ({
 								post={post}
 								onUpvotePost={onUpvotePost}
 								onDownvotePost={onDownvotePost}
-								onUpvoteComment={onUpvoteComment}
-								onDownvoteComment={onDownvoteComment}
-								onAddCommentToPost={onAddCommentToPost}
-								onDeleteCommentFromPost={onDeleteCommentFromPost}
-								onEditCommentOnPost={onEditCommentOnPost}
 							/>
 						);
 					}}
@@ -69,11 +54,6 @@ Home.propTypes = {
 	posts: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 	onDownvotePost: PropTypes.func.isRequired,
-	onUpvoteComment: PropTypes.func.isRequired,
-	onDownvoteComment: PropTypes.func.isRequired,
-	onAddCommentToPost: PropTypes.func.isRequired,
-	onDeleteCommentFromPost: PropTypes.func.isRequired,
-	onEditCommentOnPost: PropTypes.func.isRequired,
 };
 
 export default Home;

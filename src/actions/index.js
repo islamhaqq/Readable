@@ -163,10 +163,10 @@ const requestCommentsForPost = () => ({
 	type: actionTypes.REQUEST_COMMENTS_FOR_POST_ACTION_TYPE,
 });
 
-const receiveCommentsForPost = json => ({
+const receiveCommentsForPost = comments => ({
 	type: actionTypes.RECEIVE_COMMENTS_FOR_POST_ACTION_TYPE,
 	payload: {
-		comments: json,
+		comments,
 	},
 });
 
@@ -177,12 +177,33 @@ export const fetchCommentsForPost = postId => {
 			`${apiUrl}/posts/${postId}/comments`,
 			authorizationHeaders,
 		);
-		const json = await response.json();
-		return dispatch(receiveCommentsForPost(json));
+
+		const comments = await response.json();
+		return dispatch(receiveCommentsForPost(comments));
 	};
 };
 
-export const addComment = ({ id, parentId, author, body }) => ({
+export const addComment = ({ id, parentId, author, body }) => {
+	return async dispatch => {
+		const requestBody = {
+			id,
+			author,
+			body,
+			timestamp: Date.now(),
+			parentId,
+		};
+
+		const response = await fetch(`${apiUrl}/comments`, {
+			method: 'post',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const json = await response.json();
+		return dispatch(createAddCommentAction(json));
+	};
+};
+
+export const createAddCommentAction = ({ id, parentId, author, body }) => ({
 	type: actionTypes.ADD_COMMENT_ACTION_TYPE,
 	payload: {
 		id,
@@ -203,10 +224,21 @@ export const editComment = ({ id, body }) => ({
 	},
 });
 
-export const deleteComment = ({ id, postId }) => ({
+export const deleteComment = ({ id, postId }) => {
+	return async dispatch => {
+		const response = await fetch(`${apiUrl}/comments/${id}`, {
+			method: 'delete',
+			...authorizationHeaders,
+		});
+		const json = await response.json();
+		return dispatch(createDeleteCommentAction(json));
+	};
+};
+
+export const createDeleteCommentAction = ({ id, parentId }) => ({
 	type: actionTypes.DELETE_COMMENT_ACTION_TYPE,
 	payload: {
-		postId,
+		parentId,
 		id,
 	},
 });

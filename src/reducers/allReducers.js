@@ -110,10 +110,10 @@ export function posts(previousState = initialState.posts, action) {
 				...previousState,
 				byId: {
 					...previousState.byId,
-					[action.payload.postId]: {
-						...previousState.byId[action.payload.postId],
+					[action.payload.parentId]: {
+						...previousState.byId[action.payload.parentId],
 						commentCount:
-							previousState.byId[action.payload.postId].commentCount - 1,
+							previousState.byId[action.payload.parentId].commentCount - 1,
 					},
 				},
 			};
@@ -230,6 +230,30 @@ export function comments(previousState = initialState.comments, action) {
 						{},
 					),
 				},
+			};
+
+		case actionTypes.RECEIVE_COMMENTS_FOR_POST_ACTION_TYPE:
+			return {
+				...previousState,
+				byId: {
+					...previousState.byId,
+					...action.payload.comments.reduce(
+						(commentsById, comment) => ({
+							...commentsById,
+							[comment.id]: {
+								...comment,
+							},
+						}),
+						{},
+					),
+				},
+				allIds: [
+					...previousState.allIds,
+					...action.payload.comments.reduce(
+						(allCommentIds, comment) => [...allCommentIds, comment.id],
+						[],
+					),
+				],
 			};
 
 		default:

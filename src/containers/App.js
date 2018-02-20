@@ -25,11 +25,6 @@ class App extends Component {
 							posts={this.props.posts}
 							onUpvotePost={this.props.upvotePost}
 							onDownvotePost={this.props.downvotePost}
-							onUpvoteComment={this.props.upvoteComment}
-							onDownvoteComment={this.props.downvoteComment}
-							onAddCommentToPost={this.props.addComment}
-							onDeleteCommentFromPost={this.props.deleteComment}
-							onEditCommentOnPost={this.props.editComment}
 							{...props}
 						/>
 					)}
@@ -94,26 +89,13 @@ const mapDispatchToProps = dispatch => ({
 	deletePost: postId => dispatch(actionCreators.deletePost(postId)),
 	editPost: postDataToSubmit =>
 		dispatch(actionCreators.editPost(postDataToSubmit)),
-	addComment: commentData => dispatch(actionCreators.addComment(commentData)),
 	upvotePost: postId => dispatch(actionCreators.upvotePost(postId)),
 	downvotePost: postId => dispatch(actionCreators.downvotePost(postId)),
-	upvoteComment: commentId => dispatch(actionCreators.upvoteComment(commentId)),
-	downvoteComment: commentId =>
-		dispatch(actionCreators.downvoteComment(commentId)),
-	deleteComment: commentToDelete =>
-		dispatch(actionCreators.deleteComment(commentToDelete)),
-	editComment: commentToEdit =>
-		dispatch(actionCreators.editComment(commentToEdit)),
 });
 
 App.propTypes = {
 	posts: PropTypes.object.isRequired,
-	addComment: PropTypes.func.isRequired,
-	deleteComment: PropTypes.func.isRequired,
 	downvotePost: PropTypes.func.isRequired,
-	upvoteComment: PropTypes.func.isRequired,
-	downvoteComment: PropTypes.func.isRequired,
-	editComment: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

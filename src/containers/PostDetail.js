@@ -21,12 +21,7 @@ class PostDetail extends Component {
 	}
 
 	async componentDidMount() {
-		const response = await this.props.fetchComments(this.props.post.id);
-		const comments = response.payload.comments;
-
-		this.setState({
-			comments,
-		});
+		await this.props.fetchComments(this.props.post.id);
 	}
 
 	handleUpdatedPostBodyChange = event => {
@@ -40,7 +35,7 @@ class PostDetail extends Component {
 			isEditDialogShowing: false,
 		});
 
-		this.props.onEditCommentOnPost(commentToUpdate);
+		this.props.editComment(commentToUpdate);
 	};
 
 	render() {
@@ -48,10 +43,10 @@ class PostDetail extends Component {
 			post,
 			onUpvotePost,
 			onDownvotePost,
-			onUpvoteComment,
-			onDownvoteComment,
-			onAddCommentToPost,
-			onDeleteCommentFromPost,
+			upvoteComment,
+			downvoteComment,
+			addComment,
+			deleteComment,
 		} = this.props;
 
 		return (
@@ -101,7 +96,7 @@ class PostDetail extends Component {
 													commentData.parentId &&
 													commentData.id
 												) {
-													onAddCommentToPost(commentData);
+													addComment(commentData);
 													this.htmlElementForCommentAuthorInput.value = '';
 													this.htmlElementForCommentBodyInput.value = '';
 												}
@@ -157,7 +152,7 @@ class PostDetail extends Component {
 																</span>
 																<span
 																	onClick={() => {
-																		onDeleteCommentFromPost({
+																		deleteComment({
 																			id,
 																			postId: post.id,
 																		});
@@ -195,11 +190,11 @@ class PostDetail extends Component {
 
 															<UpvoteButton
 																thingToUpvote={comment}
-																onUpvote={onUpvoteComment}
+																onUpvote={upvoteComment}
 															/>
 															<DownvoteButton
 																thingToDownvote={comment}
-																onDownvote={onDownvoteComment}
+																onDownvote={downvoteComment}
 															/>
 														</li>
 													);
@@ -223,6 +218,14 @@ const mapStateToProps = currentState => ({
 const mapDispatchToProps = dispatch => ({
 	fetchComments: postId =>
 		dispatch(actionCreators.fetchCommentsForPost(postId)),
+	upvoteComment: commentId => dispatch(actionCreators.upvoteComment(commentId)),
+	downvoteComment: commentId =>
+		dispatch(actionCreators.downvoteComment(commentId)),
+	deleteComment: commentToDelete =>
+		dispatch(actionCreators.deleteComment(commentToDelete)),
+	editComment: commentToEdit =>
+		dispatch(actionCreators.editComment(commentToEdit)),
+	addComment: commentData => dispatch(actionCreators.addComment(commentData)),
 });
 
 Post.propTypes = {
@@ -230,11 +233,11 @@ Post.propTypes = {
 	allComments: PropTypes.object.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 	onDownvotePost: PropTypes.func.isRequired,
-	onUpvoteComment: PropTypes.func.isRequired,
-	onDownvoteComment: PropTypes.func.isRequired,
-	onAddCommentToPost: PropTypes.func.isRequired,
-	onDeleteCommentFromPost: PropTypes.func.isRequired,
-	onEditCommentOnPost: PropTypes.func.isRequired,
+	upvoteComment: PropTypes.func.isRequired,
+	downvoteComment: PropTypes.func.isRequired,
+	addComment: PropTypes.func.isRequired,
+	deleteComment: PropTypes.func.isRequired,
+	editComment: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetail);
