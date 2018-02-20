@@ -216,7 +216,24 @@ export const createAddCommentAction = ({ id, parentId, author, body }) => ({
 	},
 });
 
-export const editComment = ({ id, body }) => ({
+export const editComment = ({ id, body }) => {
+	return async dispatch => {
+		const requestBody = {
+			body,
+			timestamp: Date.now(),
+		};
+
+		const response = await fetch(`${apiUrl}/comments/${id}`, {
+			method: 'put',
+			...authorizationHeaders,
+			body: JSON.stringify(requestBody),
+		});
+		const json = await response.json();
+		return dispatch(createEditCommentAction(json));
+	};
+};
+
+export const createEditCommentAction = ({ id, body }) => ({
 	type: actionTypes.EDIT_COMMENT_ACTION_TYPE,
 	payload: {
 		id,
