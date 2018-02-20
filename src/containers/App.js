@@ -70,6 +70,14 @@ class App extends Component {
 				/>
 
 				<Route
+					path="/:category/submit"
+					exact
+					render={props => (
+						<Submit {...props} onSubmitNewPost={this.props.onSubmitNewPost} />
+					)}
+				/>
+
+				<Route
 					path="/confirm-delete/:postId"
 					render={props => {
 						const post = this.props.posts[props.match.params.postId];
