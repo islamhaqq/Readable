@@ -12,7 +12,10 @@ const Home = ({ posts, onUpvotePost, onDownvotePost, match, categories }) => (
 	<div>
 		<table className="readable">
 			<tbody className="readable-content">
-				<NavBar categories={categories} />
+				<NavBar
+					currentCategory={match.params.category || ''}
+					categories={categories}
+				/>
 
 				<TableSpacerRow height="10px" />
 
