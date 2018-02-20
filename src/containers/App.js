@@ -33,6 +33,34 @@ class App extends Component {
 				/>
 
 				<Route
+					path="/:category"
+					exact
+					render={props => {
+						const { category } = props.match.params;
+
+						return (
+							<Home
+								posts={Object.keys(this.props.posts)
+									.filter(
+										postId => this.props.posts[postId].category === category,
+									)
+									.reduce(
+										(posts, postId) => ({
+											...posts,
+											[postId]: this.props.posts[postId],
+										}),
+										{},
+									)}
+								categories={this.props.categories}
+								onUpvotePost={this.props.upvotePost}
+								onDownvotePost={this.props.downvotePost}
+								{...props}
+							/>
+						);
+					}}
+				/>
+
+				<Route
 					path="/submit"
 					exact
 					render={props => (
