@@ -10,28 +10,28 @@ class PostsBoard extends Component {
 		};
 	}
 
+	sortByScore = () => {
+		this.props.posts.sort(
+			(first, second) => second.voteScore - first.voteScore,
+		);
+		this.setState({ sortedBy: 'voteScore' });
+	};
+
+	sortByDate = () => {
+		this.props.posts.sort(
+			(first, second) => second.timestamp - first.timestamp,
+		);
+		this.setState({ sortedBy: 'date' });
+	};
+
 	render() {
 		const { posts, onUpvotePost, onDownvotePost } = this.props;
 
 		return (
 			<tr className="home-container">
 				<td>
-					<button
-						onClick={() => {
-							posts.sort((first, second) => second.voteScore - first.voteScore);
-							this.setState({ sortedBy: 'voteScore' });
-						}}
-					>
-						Hot
-					</button>
-					<button
-						onClick={() => {
-							posts.sort((first, second) => second.timestamp - first.timestamp);
-							this.setState({ sortedBy: 'date' });
-						}}
-					>
-						Newest
-					</button>
+					<button onClick={this.sortByScore}>Hot</button>
+					<button onClick={this.sortByDate}>Newest</button>
 
 					<table className="home-content">
 						{posts.map((post, index) => (

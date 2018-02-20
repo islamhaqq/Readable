@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 import NavBar from '../components/NavBar';
 import TableSpacerRow from './TableSpacerRow';
-import PostsBoard from './PostsBoard';
+import PostsBoard from '../containers/PostsBoard';
 import PostDetail from '../containers/PostDetail';
 import NotFound from '../components/NotFound';
 
