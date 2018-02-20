@@ -24,6 +24,7 @@ class App extends Component {
 					render={props => (
 						<Home
 							posts={this.props.posts}
+							categories={this.props.categories}
 							onUpvotePost={this.props.upvotePost}
 							onDownvotePost={this.props.downvotePost}
 							{...props}
@@ -81,6 +82,7 @@ class App extends Component {
 
 const mapStateToProps = currentState => ({
 	posts: currentState.posts.byId,
+	categories: currentState.categories,
 });
 
 const mapDispatchToProps = dispatch => ({

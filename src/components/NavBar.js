@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => (
+const NavBar = ({ categories }) => (
 	<tr className="navigation-bar-container">
 		<td bgcolor="#008000">
 			<table className="navigation-bar-content">
@@ -9,9 +9,14 @@ const NavBar = () => (
 					<tr>
 						<td className="navigation-bar-main-links">
 							<Link to="/">Readable</Link>
-							<a>Non-Fiction</a>
-							<a>Fiction</a>
-							<Link to="/submit">Submit</Link>
+							{categories.map(category => (
+								<Link to={`/${category.path}`} style={{ paddingLeft: '10px' }}>
+									{category.name}
+								</Link>
+							))}
+							<Link to="/submit" style={{ paddingLeft: '10px' }}>
+								Submit
+							</Link>
 						</td>
 					</tr>
 				</tbody>

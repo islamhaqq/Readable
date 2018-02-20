@@ -8,11 +8,11 @@ import PostsBoard from './PostsBoard';
 import PostDetail from '../containers/PostDetail';
 import NotFound from '../components/NotFound';
 
-const Home = ({ posts, onUpvotePost, onDownvotePost, match }) => (
+const Home = ({ posts, onUpvotePost, onDownvotePost, match, categories }) => (
 	<div>
 		<table className="readable">
 			<tbody className="readable-content">
-				<NavBar />
+				<NavBar categories={categories} />
 
 				<TableSpacerRow height="10px" />
 
@@ -26,6 +26,24 @@ const Home = ({ posts, onUpvotePost, onDownvotePost, match }) => (
 							onDownvotePost={onDownvotePost}
 						/>
 					)}
+				/>
+
+				<Route
+					path="/:category"
+					exact
+					render={({ match }) => {
+						const { category } = match.params;
+
+						return (
+							<PostsBoard
+								posts={Object.keys(posts)
+									.map(key => posts[key])
+									.filter(post => post.category === category)}
+								onUpvotePost={onUpvotePost}
+								onDownvotePost={onDownvotePost}
+							/>
+						);
+					}}
 				/>
 
 				<Route
