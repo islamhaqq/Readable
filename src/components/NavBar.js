@@ -18,14 +18,13 @@ const NavBar = ({ categories, currentCategory }) => (
 									{category.name}
 								</Link>
 							))}
-							{currentCategory ? (
-								<Link
-									to={`${currentCategory}/submit`}
-									style={{ paddingLeft: '10px' }}
-								>
-									Submit
-								</Link>
-							) : null}
+
+							<Link
+								to={`${currentCategory || ''}/submit`}
+								style={{ paddingLeft: '10px' }}
+							>
+								Submit
+							</Link>
 						</td>
 					</tr>
 				</tbody>
