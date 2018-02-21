@@ -6,7 +6,7 @@ class SubmitForm extends Component {
 		super(props);
 
 		this.state = {
-			chosenCategory: '',
+			chosenCategory: props.currentCategory,
 		};
 	}
 
@@ -48,7 +48,10 @@ class SubmitForm extends Component {
 					/>
 
 					<label>Category</label>
-					<select onChange={this.handleChangeCategory}>
+					<select
+						value={this.state.chosenCategory}
+						onChange={this.handleChangeCategory}
+					>
 						{categories.map(category => (
 							<option value={category.name}>{category.name}</option>
 						))}
