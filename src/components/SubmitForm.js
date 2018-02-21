@@ -67,7 +67,12 @@ class SubmitForm extends Component {
 								category: this.state.chosenCategory,
 							};
 
-							if (newPostData.title && newPostData.author && newPostData.body) {
+							if (
+								newPostData.title &&
+								newPostData.author &&
+								newPostData.body &&
+								newPostData.category
+							) {
 								onSubmitNewPost(newPostData);
 								history.push('/');
 							}
