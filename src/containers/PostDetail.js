@@ -40,14 +40,14 @@ class PostDetail extends Component {
 	};
 
 	sortByScore = () => {
-		this.props.posts.sort(
+		this.props.allCommentsArray.sort(
 			(first, second) => second.voteScore - first.voteScore,
 		);
 		this.setState({ sortedBy: 'voteScore' });
 	};
 
 	sortByDate = () => {
-		this.props.posts.sort(
+		this.props.allCommentsArray.sort(
 			(first, second) => second.timestamp - first.timestamp,
 		);
 		this.setState({ sortedBy: 'date' });
@@ -124,14 +124,15 @@ class PostDetail extends Component {
 
 									<div className="comment-section">
 										<h2 className="comment-section-header">Comments</h2>
+
+										<div className="sorting-buttons">
+											<button onClick={this.sortByScore}>Hot</button>
+											<button onClick={this.sortByDate}>Newest</button>
+										</div>
+
 										<ul className="comment-section-comment-list">
-											{Object.keys(this.props.allComments)
-												.filter(
-													commentId =>
-														this.props.allComments[commentId].parentId ===
-														post.id,
-												)
-												.map(commentId => this.props.allComments[commentId])
+											{this.props.allCommentsArray
+												.filter(comment => comment.parentId === post.id)
 												.map(comment => {
 													const {
 														id,
@@ -227,7 +228,9 @@ class PostDetail extends Component {
 }
 
 const mapStateToProps = currentState => ({
-	allComments: currentState.comments.byId,
+	allCommentsArray: currentState.comments.allIds.map(
+		commentId => currentState.comments.byId[commentId],
+	),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -245,7 +248,7 @@ const mapDispatchToProps = dispatch => ({
 
 Post.propTypes = {
 	post: postPropType,
-	allComments: PropTypes.object.isRequired,
+	allCommentsArray: PropTypes.array.isRequired,
 	onUpvotePost: PropTypes.func.isRequired,
 	onDownvotePost: PropTypes.func.isRequired,
 	upvoteComment: PropTypes.func.isRequired,
