@@ -52,6 +52,7 @@ class SubmitForm extends Component {
 						value={this.state.chosenCategory}
 						onChange={this.handleChangeCategory}
 					>
+						<option selected>Select a category</option>
 						{categories.map(category => (
 							<option value={category.name}>{category.name}</option>
 						))}
