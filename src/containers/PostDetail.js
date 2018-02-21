@@ -17,6 +17,7 @@ class PostDetail extends Component {
 		this.state = {
 			isEditDialogShowing: false,
 			updatedPostBody: '',
+			sortedBy: '',
 		};
 	}
 
@@ -36,6 +37,20 @@ class PostDetail extends Component {
 		});
 
 		this.props.editComment(commentToUpdate);
+	};
+
+	sortByScore = () => {
+		this.props.posts.sort(
+			(first, second) => second.voteScore - first.voteScore,
+		);
+		this.setState({ sortedBy: 'voteScore' });
+	};
+
+	sortByDate = () => {
+		this.props.posts.sort(
+			(first, second) => second.timestamp - first.timestamp,
+		);
+		this.setState({ sortedBy: 'date' });
 	};
 
 	render() {
