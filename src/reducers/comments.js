@@ -115,7 +115,6 @@ function comments(previousState = initialState.comments, action) {
 			return {
 				...previousState,
 				byId: {
-					...previousState.byId,
 					...action.payload.comments.reduce(
 						(commentsById, comment) => ({
 							...commentsById,
@@ -127,7 +126,6 @@ function comments(previousState = initialState.comments, action) {
 					),
 				},
 				allIds: [
-					...previousState.allIds,
 					...action.payload.comments.reduce(
 						(allCommentIds, comment) => [...allCommentIds, comment.id],
 						[],
