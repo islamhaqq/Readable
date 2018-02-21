@@ -20,6 +20,14 @@ class App extends Component {
 		return (
 			<Switch>
 				<Route
+					path="/submit"
+					exact
+					render={props => (
+						<Submit {...props} onSubmitNewPost={this.props.onSubmitNewPost} />
+					)}
+				/>
+
+				<Route
 					path="/:category"
 					exact
 					render={props => {
@@ -45,14 +53,6 @@ class App extends Component {
 							/>
 						);
 					}}
-				/>
-
-				<Route
-					path="/submit"
-					exact
-					render={props => (
-						<Submit {...props} onSubmitNewPost={this.props.onSubmitNewPost} />
-					)}
 				/>
 
 				<Route
