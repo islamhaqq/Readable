@@ -5,7 +5,7 @@ import SubmitNavBar from './SubmitNavBar';
 import TableSpacerRow from './TableSpacerRow';
 import SubmitForm from './SubmitForm';
 
-const Submit = ({ onSubmitNewPost, history, match }) => {
+const Submit = ({ onSubmitNewPost, history, match, categories }) => {
 	const { category } = match.params;
 
 	return (
@@ -16,9 +16,9 @@ const Submit = ({ onSubmitNewPost, history, match }) => {
 					<TableSpacerRow height="10" />
 
 					<SubmitForm
-						onSubmitNewPost={newPostData =>
-							onSubmitNewPost({ ...newPostData, category })
-						}
+						onSubmitNewPost={onSubmitNewPost}
+						categories={categories}
+						currentCategory={category}
 						history={history}
 					/>
 				</tbody>

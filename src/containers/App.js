@@ -23,7 +23,11 @@ class App extends Component {
 					path="/submit"
 					exact
 					render={props => (
-						<Submit {...props} onSubmitNewPost={this.props.onSubmitNewPost} />
+						<Submit
+							{...props}
+							onSubmitNewPost={this.props.onSubmitNewPost}
+							categories={this.props.categories}
+						/>
 					)}
 				/>
 
@@ -59,7 +63,11 @@ class App extends Component {
 					path="/:category/submit"
 					exact
 					render={props => (
-						<Submit {...props} onSubmitNewPost={this.props.onSubmitNewPost} />
+						<Submit
+							{...props}
+							onSubmitNewPost={this.props.onSubmitNewPost}
+							categories={this.props.categories}
+						/>
 					)}
 				/>
 

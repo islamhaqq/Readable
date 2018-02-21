@@ -1,49 +1,82 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const SubmitForm = ({ onSubmitNewPost, history }) => (
-	<tr>
-		<td>
-			<label>Author</label>
-			<input
-				ref={htmlElement => (this.htmlElementForAuthorInput = htmlElement)}
-				type="text"
-			/>
+class SubmitForm extends Component {
+	constructor(props) {
+		super(props);
 
-			<label>Title</label>
-			<input
-				ref={htmlElement => (this.htmlElementForTitleInput = htmlElement)}
-				type="text"
-			/>
+		this.state = {
+			chosenCategory: '',
+		};
+	}
 
-			<label>Body</label>
-			<textarea
-				ref={htmlElement => (this.htmlElementForBodyInput = htmlElement)}
-				placeholder="post body"
-				rows="4"
-				cols="50"
-			/>
+	handleChangeCategory = event => {
+		this.setState({
+			chosenCategory: event.target.value,
+		});
+	};
 
-			<button
-				type="submit"
-				onClick={() => {
-					const newPostData = {
-						title: this.htmlElementForTitleInput.value,
-						author: this.htmlElementForAuthorInput.value,
-						body: this.htmlElementForBodyInput.value,
-					};
+	render() {
+		const {
+			onSubmitNewPost,
+			history,
+			categories,
+			currentCategory,
+		} = this.props;
 
-					if (newPostData.title && newPostData.author && newPostData.body) {
-						onSubmitNewPost(newPostData);
-						history.push('/');
-					}
-				}}
-			>
-				Submit
-			</button>
-		</td>
-	</tr>
-);
+		return (
+			<tr>
+				<td>
+					<label>Author</label>
+					<input
+						ref={htmlElement => (this.htmlElementForAuthorInput = htmlElement)}
+						type="text"
+					/>
+
+					<label>Title</label>
+					<input
+						ref={htmlElement => (this.htmlElementForTitleInput = htmlElement)}
+						type="text"
+					/>
+
+					<label>Body</label>
+					<textarea
+						ref={htmlElement => (this.htmlElementForBodyInput = htmlElement)}
+						placeholder="post body"
+						rows="4"
+						cols="50"
+					/>
+
+					<label>Category</label>
+					<select onChange={this.handleChangeCategory}>
+						{categories.map(category => (
+							<option value={category.name}>{category.name}</option>
+						))}
+					</select>
+
+					<button
+						type="submit"
+						onClick={() => {
+							const newPostData = {
+								title: this.htmlElementForTitleInput.value,
+								author: this.htmlElementForAuthorInput.value,
+								body: this.htmlElementForBodyInput.value,
+								category: this.state.chosenCategory,
+							};
+
+							if (newPostData.title && newPostData.author && newPostData.body) {
+								onSubmitNewPost(newPostData);
+								history.push('/');
+							}
+						}}
+					>
+						Submit
+					</button>
+				</td>
+			</tr>
+		);
+	}
+}
 
 SubmitForm.propTypes = {
 	onSubmitNewPost: PropTypes.func.isRequired,
